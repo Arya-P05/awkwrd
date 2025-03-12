@@ -20,6 +20,7 @@ const App = () => {
         <StatusBar style="dark" />
         <NavigationContainer>
           <Stack.Navigator 
+            id="AppNavigator" // Added id property to fix the TypeScript error
             initialRouteName="Home"
             screenOptions={{
               headerShown: false,
