@@ -20,6 +20,7 @@ const App = () => {
         <StatusBar style="dark" />
         <NavigationContainer>
           <Stack.Navigator 
+            id={undefined}
             initialRouteName="Home"
             screenOptions={{
               headerShown: false,
