@@ -26,6 +26,9 @@
     },
     "web": {
       "favicon": "./public/favicon.ico"
+    },
+    "experiments": {
+      "typedRoutes": true
     }
   }
 }
