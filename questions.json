@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "category": "real talk",
+    "question": "What's something you've never told anyone?",
+    "followUp": "Why have you kept it a secret until now?"
+  },
+  {
+    "id": 2,
+    "category": "relationships",
+    "question": "What's your biggest regret in life so far?",
+    "followUp": "If you could go back, what would you do differently?"
+  },
+  {
+    "id": 3,
+    "category": "relationships",
+    "question": "What's the most embarrassing thing that's ever happened to you?",
+    "followUp": "How did that experience change you?"
+  },
+  {
+    "id": 4,
+    "category": "relationships",
+    "question": "What's one thing you wish your friends knew about you?",
+    "followUp": "Why haven't you told them?"
+  },
+  {
+    "id": 5,
+    "category": "relationships",
+    "question": "What's the hardest truth you've had to accept?",
+    "followUp": "How did accepting this truth change your perspective?"
+  },
+  {
+    "id": 6,
+    "category": "relationships",
+    "question": "What's your biggest pet peeve in a friendship?",
+    "followUp": "Have you ever ended a friendship because of this?"
+  },
+  {
+    "id": 7,
+    "category": "relationships",
+    "question": "What's the most important quality in a friend?",
+    "followUp": "Do you think you embody this quality yourself?"
+  },
+  {
+    "id": 8,
+    "category": "relationships",
+    "question": "Have you ever betrayed someone's trust? What happened?",
+    "followUp": "How did this affect your relationship afterward?"
+  },
+  {
+    "id": 9,
+    "category": "relationships",
+    "question": "What's something you need in a relationship that you're afraid to ask for?",
+    "followUp": "Why are you afraid to ask for it?"
+  },
+  {
+    "id": 10,
+    "category": "relationships",
+    "question": "What's the biggest sacrifice you've made for someone else?",
+    "followUp": "Was it worth it in the end?"
+  },
+  {
+    "id": 11,
+    "category": "sex",
+    "question": "What's your biggest turn-on that might surprise people?",
+    "followUp": "Have you always known this about yourself?"
+  },
+  {
+    "id": 12,
+    "category": "sex",
+    "question": "What's something you've always wanted to try but haven't yet?",
+    "followUp": "What's holding you back?"
+  },
+  {
+    "id": 13,
+    "category": "sex",
+    "question": "What's the most awkward sexual encounter you've experienced?",
+    "followUp": "How did you handle the situation?"
+  },
+  {
+    "id": 14,
+    "category": "sex",
+    "question": "How important is physical intimacy to you in a relationship?",
+    "followUp": "Has this changed over time?"
+  },
+  {
+    "id": 15,
+    "category": "sex",
+    "question": "What's something you wish more people understood about sex?",
+    "followUp": "Where did you learn this insight?"
+  },
+  {
+    "id": 16,
+    "category": "dating",
+    "question": "What's your worst first date story?",
+    "followUp": "Did you see any red flags you ignored?"
+  },
+  {
+    "id": 17,
+    "category": "dating",
+    "question": "What's the most superficial thing you've judged a potential date on?",
+    "followUp": "Do you still consider this important?"
+  },
+  {
+    "id": 18,
+    "category": "dating",
+    "question": "Have you ever dated someone your friends or family didn't approve of?",
+    "followUp": "How did that affect your relationship?"
+  },
+  {
+    "id": 19,
+    "category": "dating",
+    "question": "What's your idea of a perfect date?",
+    "followUp": "Have you ever experienced this perfect date?"
+  },
+  {
+    "id": 20,
+    "category": "dating",
+    "question": "What's a dating app experience that stands out to you?",
+    "followUp": "How has online dating changed your approach to relationships?"
+  }
+]

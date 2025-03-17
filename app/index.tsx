@@ -1,0 +1,178 @@
+"use client";
+
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  SafeAreaView,
+  Modal,
+} from "react-native";
+import { useState } from "react";
+import { useRouter } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
+import { useCategory } from "./context/categoryContext"; // Import context
+
+export default function HomeScreen() {
+  const router = useRouter();
+  const { selectedCategories } = useCategory(); // Get selected categories
+  const [showModal, setShowModal] = useState(false); // New: Control modal visibility
+
+  const startGame = () => {
+    const activeCategories = Object.keys(selectedCategories).filter(
+      (key) => selectedCategories[key as keyof typeof selectedCategories]
+    );
+
+    if (activeCategories.length === 0) {
+      setShowModal(true); // Show the modal instead of an alert
+      return;
+    }
+
+    router.push(`/game?categories=${activeCategories.join(",")}`);
+  };
+
+  return (
+    <SafeAreaView style={styles.container}>
+      <LinearGradient
+        colors={["#F09819", "#FF512F"]}
+        style={styles.background}
+      />
+      <View style={styles.content}>
+        <Text style={styles.title}>AWKWRD</Text>
+        <Text style={styles.subtitle}>The card game that gets real.</Text>
+      </View>
+
+      <TouchableOpacity style={styles.startButton} onPress={startGame}>
+        <Text style={styles.startButtonText}>START GAME</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.settingsButton}
+        onPress={() => router.push("/categories")}
+      >
+        <Ionicons name="settings-outline" size={30} color="white" />
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.infoButton}
+        onPress={() => router.push("/settings")}
+      >
+        <Ionicons name="information-circle-outline" size={30} color="white" />
+      </TouchableOpacity>
+
+      {/* 🚀 New: Modal for selecting categories */}
+      <Modal visible={showModal} transparent animationType="fade">
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Select Categories</Text>
+            <Text style={styles.modalText}>
+              You need to pick at least one category before starting the game.
+            </Text>
+            <TouchableOpacity
+              style={styles.modalButton}
+              onPress={() => {
+                setShowModal(false);
+                router.push("/categories"); // Navigate to category selection
+              }}
+            >
+              <Text style={styles.modalButtonText}>Pick Categories</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+    </SafeAreaView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#6a0dad",
+  },
+  background: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  content: {
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 50,
+    fontWeight: "bold",
+    color: "white",
+    letterSpacing: 2,
+    textTransform: "uppercase",
+  },
+  subtitle: {
+    fontSize: 16,
+    color: "rgba(255, 255, 255, 0.9)",
+    marginTop: 5,
+    textAlign: "center",
+  },
+  startButton: {
+    backgroundColor: "white",
+    paddingVertical: 15,
+    paddingHorizontal: 30,
+    borderRadius: 30,
+    marginTop: 50,
+    elevation: 5,
+  },
+  startButtonText: {
+    color: "#333",
+    fontSize: 18,
+    fontWeight: "bold",
+  },
+  settingsButton: {
+    position: "absolute",
+    bottom: 30,
+    left: 30,
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    padding: 10,
+    borderRadius: 20,
+  },
+  infoButton: {
+    position: "absolute",
+    bottom: 30,
+    right: 30,
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    padding: 10,
+    borderRadius: 20,
+  },
+  /* 🛠 Modal Styles (same as the ending modal) */
+  modalContainer: {
+    flex: 1,
+    backgroundColor: "rgba(0, 0, 0, 0.7)",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  modalContent: {
+    backgroundColor: "#fff",
+    padding: 20,
+    borderRadius: 10,
+    alignItems: "center",
+    width: "80%",
+  },
+  modalTitle: {
+    fontSize: 22,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  modalText: {
+    fontSize: 16,
+    textAlign: "center",
+    marginBottom: 20,
+  },
+  modalButton: {
+    backgroundColor: "#FF512F",
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 8,
+  },
+  modalButtonText: {
+    color: "white",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+});
