@@ -73,13 +73,10 @@ export default function GameScreen() {
         if (!currentCard) return prev;
 
         let newDeck =
-          direction === -1
-            ? [...prev.slice(1), prev[0]] // Skip → move to the back
-            : prev.slice(1); // Answer → remove from deck
+          direction === -1 ? [...prev.slice(1), prev[0]] : prev.slice(1);
 
         setCurrentCard(newDeck.length > 0 ? newDeck[0] : null);
 
-        // 🚀 Delay setting gameEnded so swipe animation fully completes
         if (newDeck.length === 0) {
           setTimeout(() => setGameEnded(true), 200);
         }
