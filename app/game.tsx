@@ -72,7 +72,10 @@ export default function GameScreen() {
       setRemainingCards((prev) => {
         if (!currentCard) return prev;
 
-        let newDeck = [...prev.slice(1), prev[0]];
+        let newDeck =
+          direction === -1
+            ? [...prev.slice(1), prev[0]] // Skip → move to the back
+            : prev.slice(1); // Answer → remove from deck
 
         setCurrentCard(newDeck.length > 0 ? newDeck[0] : null);
 
