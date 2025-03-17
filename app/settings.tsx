@@ -26,33 +26,34 @@ export default function SettingsScreen() {
         colors={["#F09819", "#FF512F"]}
         style={styles.background}
       />
-      <View style={styles.header}>
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => router.push("/")}
-        >
-          <Ionicons name="arrow-back" size={24} color="#333" />
-        </TouchableOpacity>
-      </View>
-      <ScrollView>
+
+      {/* Back Button */}
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => router.push("/")}
+      >
+        <Ionicons name="arrow-back" size={32} color="white" />
+      </TouchableOpacity>
+
+      <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* About Section */}
-        <View style={styles.section}>
+        <View style={styles.card}>
           <Text style={styles.title}>AWKWRD</Text>
           <Text style={styles.tagline}>The card game that gets real.</Text>
           <Text style={styles.aboutText}>
-            AWKWRD is a fun and engaging card game designed to spark meaningful,
+            AWKWRD is a fun, engaging card game designed to spark meaningful,
             hilarious, and sometimes uncomfortable conversations among friends.
             Pick your categories, answer the questions, and see where the night
             takes you.
           </Text>
         </View>
 
-        {/* About & Support */}
-        <View style={styles.section}>
+        {/* Support & Legal */}
+        <View style={styles.card}>
           <Text style={styles.sectionTitle}>Support & Legal</Text>
 
           <TouchableOpacity style={styles.optionRow} onPress={openEmail}>
-            <Ionicons name="mail-outline" size={24} color="#6a0dad" />
+            <Ionicons name="mail-outline" size={26} color="white" />
             <Text style={styles.optionText}>Contact Support</Text>
           </TouchableOpacity>
 
@@ -60,7 +61,7 @@ export default function SettingsScreen() {
             style={styles.optionRow}
             onPress={() => router.push("/privacy-policy")}
           >
-            <Ionicons name="document-text-outline" size={24} color="#6a0dad" />
+            <Ionicons name="document-text-outline" size={26} color="white" />
             <Text style={styles.optionText}>Privacy Policy</Text>
           </TouchableOpacity>
 
@@ -68,7 +69,7 @@ export default function SettingsScreen() {
             style={styles.optionRow}
             onPress={() => router.push("/terms-of-service")}
           >
-            <Ionicons name="document-outline" size={24} color="#6a0dad" />
+            <Ionicons name="document-outline" size={26} color="white" />
             <Text style={styles.optionText}>Terms of Service</Text>
           </TouchableOpacity>
         </View>
@@ -78,64 +79,75 @@ export default function SettingsScreen() {
 }
 
 const styles = StyleSheet.create({
-  background: { ...StyleSheet.absoluteFillObject },
   container: {
     flex: 1,
-    backgroundColor: "#f8f8f8",
   },
-  header: {
-    flexDirection: "row",
+  background: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  scrollContent: {
+    flexGrow: 1,
+    justifyContent: "center",
     alignItems: "center",
-    padding: 10,
-    marginTop: 15,
+    paddingBottom: 40,
   },
   backButton: {
-    marginLeft: 10,
+    position: "absolute",
+    top: 50,
+    left: 20,
+    zIndex: 10,
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    padding: 12,
+    borderRadius: 30,
   },
-  section: {
-    backgroundColor: "white",
-    borderRadius: 10,
-    margin: 15,
+  card: {
+    backgroundColor: "rgba(255, 255, 255, 0.15)",
+    borderRadius: 15,
     padding: 20,
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
+    marginVertical: 15,
+    width: "85%",
+    alignItems: "center",
+    elevation: 5,
   },
   title: {
-    fontSize: 36,
+    fontSize: 32,
     fontWeight: "bold",
+    color: "white",
+    textTransform: "uppercase",
     textAlign: "center",
-    color: "#6a0dad",
     letterSpacing: 2,
   },
   tagline: {
     fontSize: 16,
-    textAlign: "center",
-    color: "#666",
+    color: "rgba(255, 255, 255, 0.85)",
     marginTop: 5,
+    textAlign: "center",
   },
   aboutText: {
     fontSize: 16,
-    color: "#333",
+    color: "white",
     textAlign: "center",
     marginTop: 10,
+    opacity: 0.9,
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: "bold",
-    marginBottom: 15,
-    color: "#333",
+    color: "white",
+    marginBottom: 10,
+    textAlign: "center",
   },
   optionRow: {
     flexDirection: "row",
     alignItems: "center",
     paddingVertical: 12,
-    borderBottomWidth: 1,
-    borderBottomColor: "#f0f0f0",
+    width: "100%",
+    justifyContent: "center",
   },
   optionText: {
     fontSize: 16,
     marginLeft: 10,
-    color: "#333",
+    color: "white",
+    fontWeight: "500",
   },
 });
