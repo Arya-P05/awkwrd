@@ -12,12 +12,12 @@ import { useState } from "react";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
-import { useCategory } from "./context/categoryContext"; // Import context
+import { useCategory } from "./context/categoryContext";
 
 export default function HomeScreen() {
   const router = useRouter();
-  const { selectedCategories } = useCategory(); // Get selected categories
-  const [showModal, setShowModal] = useState(false); // New: Control modal visibility
+  const { selectedCategories } = useCategory();
+  const [showModal, setShowModal] = useState(false);
 
   const startGame = () => {
     const activeCategories = Object.keys(selectedCategories).filter(
@@ -25,7 +25,7 @@ export default function HomeScreen() {
     );
 
     if (activeCategories.length === 0) {
-      setShowModal(true); // Show the modal instead of an alert
+      setShowModal(true);
       return;
     }
 
@@ -61,7 +61,6 @@ export default function HomeScreen() {
         <Ionicons name="information-circle-outline" size={30} color="white" />
       </TouchableOpacity>
 
-      {/* 🚀 New: Modal for selecting categories */}
       <Modal visible={showModal} transparent animationType="fade">
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
@@ -73,7 +72,7 @@ export default function HomeScreen() {
               style={styles.modalButton}
               onPress={() => {
                 setShowModal(false);
-                router.push("/categories"); // Navigate to category selection
+                router.push("/categories");
               }}
             >
               <Text style={styles.modalButtonText}>Pick Categories</Text>
@@ -140,7 +139,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 20,
   },
-  /* 🛠 Modal Styles (same as the ending modal) */
   modalContainer: {
     flex: 1,
     backgroundColor: "rgba(0, 0, 0, 0.7)",
