@@ -14,9 +14,9 @@ import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 
 const instructions = [
-  "Pick your categories – What kind of questions are you in the mood for? Real talk? Dating? Something spicier?",
-  "Take turns answering – Only 1 skip allowed per person. Be honest (or at least entertaining).",
-  "Keep the game going – There’s no winning or losing—just unexpected conversations and hopefully some new inside jokes.",
+  "Pick the categories you're in the mood for. Real talk? Dating? Something spicier?",
+  "Take turns answering and only 1 skip allowed per person.",
+  "There’s no winning or losing—just unexpected conversations and hopefully some new inside jokes.",
 ];
 
 export default function SettingsScreen() {
@@ -34,12 +34,14 @@ export default function SettingsScreen() {
       />
 
       {/* Back Button */}
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={() => router.push("/")}
-      >
-        <Ionicons name="arrow-back" size={32} color="white" />
-      </TouchableOpacity>
+      <View style={styles.header}>
+        <TouchableOpacity
+          style={styles.backButton}
+          onPress={() => router.back()}
+        >
+          <Ionicons name="arrow-back" size={32} color="white" />
+        </TouchableOpacity>
+      </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* About Section */}
@@ -47,11 +49,18 @@ export default function SettingsScreen() {
           <Text style={styles.title}>AWKWRD</Text>
           <Text style={styles.tagline}>The card game that gets real.</Text>
           <Text style={styles.aboutText}>
-            AWKWRD is a fun, engaging card game designed to spark meaningful,
-            hilarious, and sometimes uncomfortable conversations among friends.
-            Pick your categories, answer the questions, and see where the night
-            takes you.
+            AWKWRD is a fun, simple card game designed to spark meaningful,
+            hilarious, and sometimes uncomfortable conversations.
           </Text>
+        </View>
+
+        <View style={styles.card}>
+          <Text style={styles.sectionTitle}>How to Play</Text>
+          {instructions.map((instruction, index) => (
+            <Text style={styles.instruction} key={index}>
+              {index + 1}. {instruction}
+            </Text>
+          ))}
         </View>
 
         {/* Support & Legal */}
@@ -97,13 +106,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingBottom: 40,
   },
+  header: {
+    width: "100%",
+    flexDirection: "row",
+    alignItems: "center",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    marginTop: 15,
+  },
   backButton: {
-    position: "absolute",
-    top: 50,
-    left: 20,
-    zIndex: 10,
-    padding: 12,
-    borderRadius: 30,
+    marginLeft: 10,
   },
   card: {
     backgroundColor: "rgba(255, 255, 255, 0.15)",
@@ -127,6 +139,7 @@ const styles = StyleSheet.create({
     color: "rgba(255, 255, 255, 0.85)",
     marginTop: 5,
     textAlign: "center",
+    fontStyle: "italic",
   },
   aboutText: {
     fontSize: 16,
@@ -154,5 +167,12 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     color: "white",
     fontWeight: "500",
+  },
+  instruction: {
+    fontSize: 16,
+    color: "white",
+    textAlign: "left",
+    marginTop: 10,
+    opacity: 0.9,
   },
 });
