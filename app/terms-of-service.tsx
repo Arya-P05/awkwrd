@@ -20,7 +20,7 @@ export default function TermsOfServiceScreen() {
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.backButton}
-          onPress={() => router.push("/settings")} // Dynamically go back
+          onPress={() => router.back()}
         >
           <Ionicons name="arrow-back" size={24} color="333" />
         </TouchableOpacity>
