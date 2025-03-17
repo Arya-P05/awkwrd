@@ -74,14 +74,6 @@ export default function SettingsScreen() {
 
           <TouchableOpacity
             style={styles.optionRow}
-            onPress={() => router.push("/privacy-policy")}
-          >
-            <Ionicons name="document-text-outline" size={26} color="white" />
-            <Text style={styles.optionText}>Privacy Policy</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.optionRow}
             onPress={() => router.push("/terms-of-service")}
           >
             <Ionicons name="document-outline" size={26} color="white" />

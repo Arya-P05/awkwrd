@@ -38,12 +38,20 @@ export default function SettingsScreen() {
           <Text style={styles.tagline}>Last Updated: March 2025</Text>
           <Text style={styles.aboutText}>
             By using AWKWRD, you agree to play responsibly and in good faith.
-            This game is for entertainment purposes only. We do not collect user
-            data or store any information beyond your local device.
+            This game is for 18 or older and entertainment purposes only.
           </Text>
           <Text style={styles.aboutText}>
-            AWKWRD is not liable for any awkward conversations, broken
-            friendships, or embarrassing revelations that may occur.
+            We do not collect or store any personal data. Any gameplay
+            information is kept locally on your device and is not shared with
+            third parties.
+          </Text>
+          <Text style={styles.aboutText}>
+            By using AWKWRD, you agree NOT to copy, modify, or distribute AWKWRD
+            without our permission.
+          </Text>
+          <Text style={styles.aboutText}>
+            We are not liable for any awkward conversations, broken friendships,
+            or embarrassing revelations.
           </Text>
         </View>
       </ScrollView>
