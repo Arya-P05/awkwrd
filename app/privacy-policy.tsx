@@ -20,7 +20,7 @@ export default function PrivacyPolicyScreen() {
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.backButton}
-          onPress={() => router.push("/settings")}
+          onPress={() => router.back()}
         >
           <Ionicons name="arrow-back" size={24} color="333" />
         </TouchableOpacity>
