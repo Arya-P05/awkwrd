@@ -13,6 +13,12 @@ import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
 
+const instructions = [
+  "Pick your categories – What kind of questions are you in the mood for? Real talk? Dating? Something spicier?",
+  "Take turns answering – Only 1 skip allowed per person. Be honest (or at least entertaining).",
+  "Keep the game going – There’s no winning or losing—just unexpected conversations and hopefully some new inside jokes.",
+];
+
 export default function SettingsScreen() {
   const router = useRouter();
 
@@ -96,7 +102,6 @@ const styles = StyleSheet.create({
     top: 50,
     left: 20,
     zIndex: 10,
-    backgroundColor: "rgba(255, 255, 255, 0.2)",
     padding: 12,
     borderRadius: 30,
   },
