@@ -11,6 +11,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function SettingsScreen() {
   const router = useRouter();
@@ -21,6 +22,10 @@ export default function SettingsScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <LinearGradient
+        colors={["#F09819", "#FF512F"]}
+        style={styles.background}
+      />
       <View style={styles.header}>
         <TouchableOpacity
           style={styles.backButton}
@@ -73,6 +78,7 @@ export default function SettingsScreen() {
 }
 
 const styles = StyleSheet.create({
+  background: { ...StyleSheet.absoluteFillObject },
   container: {
     flex: 1,
     backgroundColor: "#f8f8f8",
