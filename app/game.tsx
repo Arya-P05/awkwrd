@@ -72,7 +72,7 @@ export default function GameScreen() {
       setRemainingCards((prev) => {
         if (!currentCard) return prev;
 
-        let newDeck = prev.slice(1); // Remove swiped card
+        let newDeck = [...prev.slice(1), prev[0]];
 
         setCurrentCard(newDeck.length > 0 ? newDeck[0] : null);
 
@@ -169,7 +169,7 @@ export default function GameScreen() {
             </Text>
             <TouchableOpacity
               style={styles.modalButton}
-              onPress={() => router.replace("/")} // Navigate to home
+              onPress={() => router.replace("/")}
             >
               <Text style={styles.modalButtonText}>Back to Home</Text>
             </TouchableOpacity>

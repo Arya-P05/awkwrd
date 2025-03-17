@@ -43,14 +43,20 @@ export default function SettingsScreen() {
         </TouchableOpacity>
       </View>
 
-      <ScrollView contentContainerStyle={styles.scrollContent}>
+      <ScrollView
+        contentContainerStyle={styles.scrollContent}
+        showsVerticalScrollIndicator={false}
+      >
         {/* About Section */}
         <View style={styles.card}>
           <Text style={styles.title}>AWKWRD</Text>
           <Text style={styles.tagline}>The card game that gets real.</Text>
           <Text style={styles.aboutText}>
             AWKWRD is a fun, simple card game designed to spark meaningful,
-            hilarious, and sometimes uncomfortable conversations.
+            hilarious, and sometimes uncomfortable conversations. Whether you're
+            best friends, breaking the ice, or just looking for an entertaining
+            way to pass the time, AWKWRD will keep the conversation flowing with
+            thought-provoking and unexpected questions.
           </Text>
         </View>
 
