@@ -32,8 +32,9 @@ export default function GameScreen() {
 
   const [currentCard, setCurrentCard] = useState<Question | null>(null);
   const [remainingCards, setRemainingCards] = useState<Question[]>([]);
-  const [gameEnded, setGameEnded] = useState(false); // NEW: Track game over
+  const [gameEnded, setGameEnded] = useState(false);
   const pan = useRef(new Animated.ValueXY()).current;
+  const cardOpacity = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
     if (!selectedCategories.length) return;
@@ -43,6 +44,7 @@ export default function GameScreen() {
     ) as Question[];
 
     const shuffled = [...filteredQuestions].sort(() => Math.random() - 0.5);
+    console.log("Initializing Game - Total Questions:", shuffled.length);
 
     setRemainingCards(shuffled);
     setCurrentCard(shuffled.length > 0 ? shuffled[0] : null);
@@ -69,20 +71,19 @@ export default function GameScreen() {
       duration: 200,
       useNativeDriver: true,
     }).start(() => {
-      setRemainingCards((prev) => {
-        if (!currentCard) return prev;
+      if (!currentCard || remainingCards.length === 0) return;
 
-        let newDeck =
+      setRemainingCards((prev) => {
+        const newDeck =
           direction === -1 ? [...prev.slice(1), prev[0]] : prev.slice(1);
 
-        console.log("New deck length:", newDeck.length);
-        console.log("Setting current card to:", newDeck[0]?.question || "null");
+        console.log(
+          "AFTER Update - Setting Current Card to:",
+          newDeck[0]?.question || "null"
+        );
 
         setCurrentCard(newDeck.length > 0 ? newDeck[0] : null);
-
-        if (newDeck.length === 0) {
-          setTimeout(() => setGameEnded(true), 200);
-        }
+        if (newDeck.length === 0) setTimeout(() => setGameEnded(true), 200);
 
         return newDeck;
       });
@@ -96,17 +97,34 @@ export default function GameScreen() {
     onPanResponderMove: Animated.event([null, { dx: pan.x }], {
       useNativeDriver: false,
     }),
+    onPanResponderGrant: () => {
+      Animated.timing(cardOpacity, {
+        toValue: 0.5,
+        duration: 150,
+        useNativeDriver: true,
+      }).start();
+    },
     onPanResponderRelease: (_, gesture) => {
-      if (gesture.dx > 120) {
+      const threshold = width * 0.4;
+      const velocityThreshold = 1.5;
+
+      if (gesture.dx > threshold || gesture.vx > velocityThreshold) {
         handleSwipeComplete(1);
-      } else if (gesture.dx < -120) {
+      } else if (gesture.dx < -threshold || gesture.vx < -velocityThreshold) {
         handleSwipeComplete(-1);
       } else {
-        Animated.spring(pan, {
+        Animated.timing(pan, {
           toValue: { x: 0, y: 0 },
+          duration: 150,
           useNativeDriver: true,
         }).start();
       }
+
+      Animated.timing(cardOpacity, {
+        toValue: 1,
+        duration: 150,
+        useNativeDriver: true,
+      }).start();
     },
   });
 
@@ -142,16 +160,12 @@ export default function GameScreen() {
                   {
                     rotate: pan.x.interpolate({
                       inputRange: [-width, 0, width],
-                      outputRange: ["-10deg", "0deg", "10deg"], // Tilts left or right
+                      outputRange: ["-10deg", "0deg", "10deg"],
                       extrapolate: "clamp",
                     }),
                   },
                 ],
-                opacity: pan.x.interpolate({
-                  inputRange: [-width, 0, width],
-                  outputRange: [0, 1, 0],
-                  extrapolate: "clamp",
-                }),
+                opacity: cardOpacity,
               },
             ]}
           >
@@ -161,17 +175,17 @@ export default function GameScreen() {
             <Text style={styles.questionText}>{currentCard.question}</Text>
             <Text style={styles.logoText}>awkwrd</Text>
           </Animated.View>
-        ) : null}
+        ) : gameEnded ? null : (
+          <Text style={styles.loadingText}>Loading...</Text>
+        )}
       </View>
 
-      {/* Subtle Swipe Hints */}
       <View style={styles.footer}>
         <Text style={styles.swipeHintText}>← Skip</Text>
         <Text style={styles.swipeHintText}>Swipe</Text>
         <Text style={styles.swipeHintText}>Next →</Text>
       </View>
 
-      {/* NEW: End Game Modal */}
       <Modal visible={gameEnded} transparent animationType="fade">
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
