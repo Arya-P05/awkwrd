@@ -75,6 +75,9 @@ export default function GameScreen() {
         let newDeck =
           direction === -1 ? [...prev.slice(1), prev[0]] : prev.slice(1);
 
+        console.log("New deck length:", newDeck.length);
+        console.log("Setting current card to:", newDeck[0]?.question || "null");
+
         setCurrentCard(newDeck.length > 0 ? newDeck[0] : null);
 
         if (newDeck.length === 0) {
@@ -134,10 +137,19 @@ export default function GameScreen() {
                 backgroundColor: getCategoryColor(currentCard.category),
                 width: width * 0.9,
                 height: height * 0.6,
-                transform: [{ translateX: pan.x }],
+                transform: [
+                  { translateX: pan.x },
+                  {
+                    rotate: pan.x.interpolate({
+                      inputRange: [-width, 0, width],
+                      outputRange: ["-10deg", "0deg", "10deg"], // Tilts left or right
+                      extrapolate: "clamp",
+                    }),
+                  },
+                ],
                 opacity: pan.x.interpolate({
                   inputRange: [-width, 0, width],
-                  outputRange: [0, 1, 0], // Fades out as it moves
+                  outputRange: [0, 1, 0],
                   extrapolate: "clamp",
                 }),
               },
