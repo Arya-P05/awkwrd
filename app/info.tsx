@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: "white",
     fontWeight: "bold",
-    marginRight: 9,
+    marginRight: 10,
   },
   instruction: {
     fontSize: 16,
