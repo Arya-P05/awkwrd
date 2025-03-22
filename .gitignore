@@ -36,3 +36,12 @@ yarn-error.*
 *.tsbuildinfo
 
 app-example
+
+#txt files
+sex.txt
+relationship.txt
+dating.txt
+realtalk.txt
+
+#question making script
+questionExtractor.py
