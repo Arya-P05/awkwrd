@@ -65,12 +65,23 @@ export default function SettingsScreen() {
 
         <View style={styles.card}>
           <Text style={styles.sectionTitle}>How to Play</Text>
-          {instructions.map((instruction, index) => (
-            <View key={index} style={styles.instructionRow}>
-              <Text style={styles.bullet}>{index + 1}.</Text>
-              <Text style={styles.instruction}>{instruction}</Text>
-            </View>
-          ))}
+          {instructions.map((instruction, index) => {
+            if (index === 0) {
+              return (
+                <View key={index} style={styles.instructionRow}>
+                  <Text style={styles.bullet1}>{index + 1}.</Text>
+                  <Text style={styles.instruction}>{instruction}</Text>
+                </View>
+              );
+            } else {
+              return (
+                <View key={index} style={styles.instructionRow}>
+                  <Text style={styles.bullet}>{index + 1}.</Text>
+                  <Text style={styles.instruction}>{instruction}</Text>
+                </View>
+              );
+            }
+          })}
         </View>
 
         {/* Support & Legal */}
@@ -180,6 +191,12 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     marginRight: 8,
+  },
+  bullet1: {
+    fontSize: 16,
+    color: "white",
+    fontWeight: "bold",
+    marginRight: 9,
   },
   instruction: {
     fontSize: 16,
