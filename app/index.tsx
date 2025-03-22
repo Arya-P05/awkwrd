@@ -40,7 +40,7 @@ export default function HomeScreen() {
       />
       <View style={styles.content}>
         <Text style={styles.title}>AWKWRD</Text>
-        <Text style={styles.subtitle}>The card game that gets real.</Text>
+        <Text style={styles.subtitle}>People you know. Stories you don't.</Text>
       </View>
 
       <TouchableOpacity style={styles.startButton} onPress={startGame}>

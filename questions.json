@@ -2,7 +2,17 @@
   {
     "id": 1,
     "category": "real talk",
-    "question": "What's something you've never told anyone?"
+    "question": "Parenting is hard. What should your parents have taught you when you were younger?"
+  },
+  {
+    "id": 2,
+    "category": "real talk",
+    "question": "How can we repair race relations in North America?"
+  },
+  {
+    "id": 3,
+    "category": "real talk",
+    "question": "You can only stream one album for the rest of your life. What is it?"
   },
   {
     "id": 2,
@@ -10,89 +20,9 @@
     "question": "What's your biggest regret in life so far?"
   },
   {
-    "id": 3,
-    "category": "relationships",
-    "question": "What's the most embarrassing thing that's ever happened to you?"
-  },
-  {
-    "id": 4,
-    "category": "relationships",
-    "question": "What's one thing you wish your friends knew about you?"
-  },
-  {
-    "id": 5,
-    "category": "relationships",
-    "question": "What's the hardest truth you've had to accept?"
-  },
-  {
-    "id": 6,
-    "category": "relationships",
-    "question": "What's your biggest pet peeve in a friendship?"
-  },
-  {
-    "id": 7,
-    "category": "relationships",
-    "question": "What's the most important quality in a friend?"
-  },
-  {
-    "id": 8,
-    "category": "relationships",
-    "question": "Have you ever betrayed someone's trust? What happened?"
-  },
-  {
-    "id": 9,
-    "category": "relationships",
-    "question": "What's something you need in a relationship that you're afraid to ask for?"
-  },
-  {
-    "id": 10,
-    "category": "relationships",
-    "question": "What's the biggest sacrifice you've made for someone else?"
-  },
-  {
-    "id": 11,
-    "category": "sex",
-    "question": "What's your biggest turn-on that might surprise people?"
-  },
-  {
-    "id": 12,
-    "category": "sex",
-    "question": "What's something you've always wanted to try but haven't yet?"
-  },
-  {
-    "id": 13,
-    "category": "sex",
-    "question": "What's the most awkward sexual encounter you've experienced?"
-  },
-  {
     "id": 14,
     "category": "sex",
     "question": "How important is physical intimacy to you in a relationship?"
-  },
-  {
-    "id": 15,
-    "category": "sex",
-    "question": "What's something you wish more people understood about sex?"
-  },
-  {
-    "id": 16,
-    "category": "dating",
-    "question": "What's your worst first date story?"
-  },
-  {
-    "id": 17,
-    "category": "dating",
-    "question": "What's the most superficial thing you've judged a potential date on?"
-  },
-  {
-    "id": 18,
-    "category": "dating",
-    "question": "Have you ever dated someone your friends or family didn't approve of?"
-  },
-  {
-    "id": 19,
-    "category": "dating",
-    "question": "What's your idea of a perfect date?"
   },
   {
     "id": 20,

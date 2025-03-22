@@ -52,11 +52,14 @@ export default function SettingsScreen() {
           <Text style={styles.title}>AWKWRD</Text>
           <Text style={styles.tagline}>The card game that gets real.</Text>
           <Text style={styles.aboutText}>
-            AWKWRD is a fun, simple card game designed to spark meaningful,
-            hilarious, and sometimes uncomfortable conversations. Whether you're
-            best friends, breaking the ice, or just looking for an entertaining
-            way to pass the time, AWKWRD will keep the conversation flowing with
-            thought-provoking and unexpected questions.
+            AWKWRD is a conversation card game with 140 questions made to deepen
+            connections and stimulate memorable moment all while having a good
+            time.
+          </Text>
+          <Text style={styles.aboutText}>
+            Don't be afriad to go deep, get personal, and be honest. Ultimately
+            it doesn't matter how many cards you get through. The point of the
+            game is to engage in meaninful conversations.
           </Text>
         </View>
 
