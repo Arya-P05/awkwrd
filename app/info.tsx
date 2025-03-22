@@ -66,9 +66,10 @@ export default function SettingsScreen() {
         <View style={styles.card}>
           <Text style={styles.sectionTitle}>How to Play</Text>
           {instructions.map((instruction, index) => (
-            <Text style={styles.instruction} key={index}>
-              {index + 1}. {instruction}
-            </Text>
+            <View key={index} style={styles.instructionRow}>
+              <Text style={styles.bullet}>{index + 1}.</Text>
+              <Text style={styles.instruction}>{instruction}</Text>
+            </View>
           ))}
         </View>
 
@@ -169,11 +170,20 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "500",
   },
+  instructionRow: {
+    flexDirection: "row",
+    alignItems: "flex-start",
+    marginTop: 10,
+  },
+  bullet: {
+    fontSize: 16,
+    color: "white",
+    fontWeight: "bold",
+    marginRight: 8,
+  },
   instruction: {
     fontSize: 16,
     color: "white",
-    textAlign: "left",
-    marginTop: 10,
-    opacity: 0.9,
+    flexShrink: 1,
   },
 });
