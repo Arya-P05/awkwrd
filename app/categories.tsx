@@ -57,14 +57,12 @@ export default function CategorySelectionScreen() {
   const router = useRouter();
   const { selectedCategories, toggleCategory } = useCategory();
   const [modalVisible, setModalVisible] = useState(false);
+  const activeCategories = Object.keys(selectedCategories).filter(
+    (key) => selectedCategories[key as CategoryId]
+  );
 
   const startGame = () => {
-    const activeCategories = Object.keys(selectedCategories).filter(
-      (key) => selectedCategories[key as CategoryId]
-    );
-
     if (activeCategories.length === 0) {
-      setModalVisible(true);
       return;
     }
 
@@ -84,9 +82,10 @@ export default function CategorySelectionScreen() {
 
       <View style={styles.header}>
         <Text style={styles.title}>Select Categories</Text>
-        <Text style={styles.subtitle}>
+        {/* <Text style={styles.subtitle}>
           What questions are you in the mood for?
-        </Text>
+        </Text> */}
+        <Text style={styles.subtitle}>Pick at least one to get started.</Text>
       </View>
 
       <View style={styles.categoryGrid}>
@@ -112,8 +111,32 @@ export default function CategorySelectionScreen() {
         ))}
       </View>
 
-      <TouchableOpacity style={styles.startButton} onPress={startGame}>
-        <Text style={styles.startButtonText}>Start Game</Text>
+      <TouchableOpacity
+        style={[
+          styles.startButton,
+          activeCategories.length === 0 && {
+            backgroundColor: "rgba(255, 255, 255, 0.1)",
+          },
+          activeCategories.length > 0 && {
+            backgroundColor: "white",
+          },
+        ]}
+        onPress={activeCategories.length > 0 ? startGame : undefined} // Disable press if no categories are selected
+      >
+        <Text
+          style={[
+            styles.startButtonText,
+            activeCategories.length === 0 && {
+              color: "white",
+              opacity: 0.5,
+            },
+            activeCategories.length > 0 && {
+              color: "black",
+            },
+          ]}
+        >
+          Start Game
+        </Text>
       </TouchableOpacity>
 
       {/* Modal for no category selected */}
@@ -167,12 +190,14 @@ const styles = StyleSheet.create({
   categoryText: { fontSize: 18, fontWeight: "600", color: "white" },
   startButton: {
     marginTop: 30,
-    backgroundColor: "white",
     paddingVertical: 12,
     paddingHorizontal: 30,
     borderRadius: 10,
   },
-  startButtonText: { fontSize: 18, fontWeight: "bold", color: "#FF512F" },
+  startButtonText: {
+    fontSize: 18,
+    fontWeight: "600",
+  },
   backButton: { position: "absolute", top: 60, left: 20, padding: 12 },
   categoryIcon: { marginBottom: 10 },
   modalContainer: {

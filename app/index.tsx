@@ -25,7 +25,7 @@ export default function HomeScreen() {
     );
 
     if (activeCategories.length === 0) {
-      setShowModal(true);
+      router.push(`/categories`);
       return;
     }
 

@@ -13,12 +13,16 @@
       "bundleIdentifier": "com.aryap.05.awkwrdcardgame",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
-      }
+      },
+      "runtimeVersion": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "runtimeVersion": {
+        "policy": "appVersion"
       }
     },
     "web": {
@@ -48,9 +52,6 @@
       "eas": {
         "projectId": "1c0fafa0-aa27-40bf-aa4d-263512d92f75"
       }
-    },
-    "runtimeVersion": {
-      "policy": "appVersion"
     },
     "updates": {
       "url": "https://u.expo.dev/1c0fafa0-aa27-40bf-aa4d-263512d92f75"
