@@ -44,10 +44,18 @@ export default function GameScreen() {
     ) as Question[];
 
     const shuffled = [...filteredQuestions].sort(() => Math.random() - 0.5);
-    console.log("Initializing Game - Total Questions:", shuffled.length);
 
-    setRemainingCards(shuffled);
-    setCurrentCard(shuffled.length > 0 ? shuffled[0] : null);
+    // Add the final card to the deck
+    const finalCard = {
+      id: -1,
+      category: "",
+      question: "Cards finished. \n Taking you back home.",
+    };
+
+    console.log("Initializing Game - Total Questions:", shuffled.length + 1);
+
+    setRemainingCards([...shuffled, finalCard]);
+    setCurrentCard(shuffled.length > 0 ? shuffled[0] : finalCard);
   }, [params.categories]);
 
   const getCategoryColor = (category: string): string => {
@@ -83,7 +91,11 @@ export default function GameScreen() {
         );
 
         setCurrentCard(newDeck.length > 0 ? newDeck[0] : null);
-        if (newDeck.length === 0) setTimeout(() => setGameEnded(true), 200);
+
+        // Navigate to home screen if the final card is swiped
+        if (newDeck.length === 0 || newDeck[0]?.id === -1) {
+          setTimeout(() => router.replace("/"), 2000);
+        }
 
         return newDeck;
       });
@@ -94,10 +106,17 @@ export default function GameScreen() {
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
-    onPanResponderMove: Animated.event([null, { dx: pan.x }], {
-      useNativeDriver: false,
-    }),
+    onPanResponderMove: (event, gestureState) => {
+      // Prevent any movement if the current card is the final card
+      if (currentCard?.id === -1) return;
+
+      Animated.event([null, { dx: pan.x }], {
+        useNativeDriver: false,
+      })(event, gestureState);
+    },
     onPanResponderGrant: () => {
+      if (currentCard?.id === -1) return;
+
       Animated.timing(cardOpacity, {
         toValue: 0.5,
         duration: 150,
@@ -105,6 +124,16 @@ export default function GameScreen() {
       }).start();
     },
     onPanResponderRelease: (_, gesture) => {
+      // Disable swiping if the current card is the final card
+      if (currentCard?.id === -1) {
+        Animated.timing(pan, {
+          toValue: { x: 0, y: 0 },
+          duration: 150,
+          useNativeDriver: true,
+        }).start();
+        return;
+      }
+
       const threshold = width * 0.4;
       const velocityThreshold = 1.5;
 
@@ -135,6 +164,7 @@ export default function GameScreen() {
         style={styles.background}
       />
 
+      {/* 👇 All content sits ABOVE the hue glows */}
       <View style={styles.header}>
         <Ionicons
           name="arrow-back"
@@ -186,6 +216,7 @@ export default function GameScreen() {
         <Text style={styles.swipeHintText}>Next →</Text>
       </View>
 
+      {/* Modal stays on top */}
       <Modal visible={gameEnded} transparent animationType="fade">
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
@@ -202,6 +233,52 @@ export default function GameScreen() {
           </View>
         </View>
       </Modal>
+
+      <Animated.View
+        pointerEvents="none"
+        style={[
+          styles.hue,
+          {
+            opacity: pan.x.interpolate({
+              inputRange: [0, width * 0.5],
+              outputRange: [0, 1],
+              extrapolate: "clamp",
+            }),
+            right: -width,
+            height: height,
+          },
+        ]}
+      >
+        <LinearGradient
+          colors={["rgba(0, 255, 0, 0.8)", "transparent"]}
+          start={{ x: 1, y: 1 }}
+          end={{ x: 0.5, y: 0 }}
+          style={styles.absoluteFill}
+        />
+      </Animated.View>
+
+      <Animated.View
+        pointerEvents="none"
+        style={[
+          styles.hue,
+          {
+            opacity: pan.x.interpolate({
+              inputRange: [-width * 0.5, 0],
+              outputRange: [1, 0],
+              extrapolate: "clamp",
+            }),
+            left: -width,
+            height: height,
+          },
+        ]}
+      >
+        <LinearGradient
+          colors={["rgb(255, 0, 0)", "transparent"]}
+          start={{ x: 0, y: 1 }}
+          end={{ x: 0.5, y: 0 }}
+          style={styles.absoluteFill}
+        />
+      </Animated.View>
     </SafeAreaView>
   );
 }

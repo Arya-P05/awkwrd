@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
     flex: 1, // Allows it to expand naturally
     justifyContent: "center",
     alignItems: "center",
+    zIndex: 1,
   },
 
   card: {
@@ -117,6 +118,20 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 16,
     fontWeight: "bold",
+  },
+
+  hue: {
+    position: "absolute",
+    width: "200%", // Make it much larger than the screen width
+    height: "200%", // Make it much taller than the screen height
+    zIndex: 0,
+  },
+  absoluteFill: {
+    position: "absolute",
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
   },
 });
 
