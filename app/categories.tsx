@@ -31,25 +31,25 @@ const CATEGORIES: {
     id: "real talk",
     name: "Real Talk",
     icon: "chatbubble-ellipses-outline",
-    colour: "rgb(0, 158, 249)",
+    colour: "rgba(147, 197, 253, 0.85)",
   },
   {
     id: "relationships",
     name: "Relationships",
     icon: "heart-outline",
-    colour: "rgba(47, 213, 69, 0.87)",
+    colour: "rgba(97, 185, 129, 0.85)",
   },
   {
     id: "sex",
     name: "Sex",
     icon: "flame-outline",
-    colour: "rgba(240, 22, 22, 0.89)",
+    colour: "rgba(239, 68, 68, 0.9)",
   },
   {
     id: "dating",
     name: "Dating",
     icon: "people-outline",
-    colour: "rgba(236, 57, 195, 0.88)",
+    colour: "rgba(244, 114, 182, 0.9)",
   },
 ];
 
@@ -72,8 +72,10 @@ export default function CategorySelectionScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <LinearGradient
-        colors={["#F09819", "#FF512F"]}
-        style={styles.background}
+        colors={["#0f172a", "#1e293b"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
+        style={{ ...StyleSheet.absoluteFillObject, backgroundColor: "#0f172a" }}
       />
 
       <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
@@ -82,9 +84,6 @@ export default function CategorySelectionScreen() {
 
       <View style={styles.header}>
         <Text style={styles.title}>Select Categories</Text>
-        {/* <Text style={styles.subtitle}>
-          What questions are you in the mood for?
-        </Text> */}
         <Text style={styles.subtitle}>Pick at least one to get started.</Text>
       </View>
 
