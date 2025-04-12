@@ -8,18 +8,32 @@ import {
   PanResponder,
   Modal,
   TouchableOpacity,
+  Platform,
 } from "react-native";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter, router } from "expo-router";
 import questions from "../questions.json";
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./gameStyles";
 import { LinearGradient } from "expo-linear-gradient";
+import * as FileSystem from "expo-file-system";
+import { db } from "../firebaseConfig";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 interface Question {
   id: number;
   category: string;
   question: string;
 }
+
+const FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdIRDSdSJ7hPsc84aAO9yJAZUAF6TTDAY35AC6QYmFsbfRuGw/formResponse";
+const ENTRY_IDS = {
+  sessionId: "entry.60489562",
+  acceptedCards: "entry.1651876338",
+  rejectedCards: "entry.738247076",
+  categories: "entry.1516522829",
+  deviceInfo: "entry.1791082658",
+};
 
 export default function GameScreen() {
   const params = useLocalSearchParams<{ categories?: string }>();
@@ -35,6 +49,76 @@ export default function GameScreen() {
   const [gameEnded, setGameEnded] = useState(false);
   const pan = useRef(new Animated.ValueXY()).current;
   const cardOpacity = useRef(new Animated.Value(1)).current;
+  const [acceptedCardIds, setAcceptedCardIds] = useState<number[]>([]);
+  const [rejectedCardIds, setRejectedCardIds] = useState<number[]>([]);
+
+  // Save data function to be called periodically and on unmount
+  const saveData = async () => {
+    try {
+      const timestamp = new Date().toISOString();
+      const sessionId = Math.random().toString(36).substring(2, 15);
+
+      if (Platform.OS !== "web") {
+        // Only perform file operations on native platforms
+        const dirPath = `${FileSystem.documentDirectory}game_data/`;
+        const dirInfo = await FileSystem.getInfoAsync(dirPath);
+        if (!dirInfo.exists) {
+          await FileSystem.makeDirectoryAsync(dirPath, { intermediates: true });
+        }
+
+        const acceptedPath = `${dirPath}accepted_cards_${timestamp}.json`;
+        await FileSystem.writeAsStringAsync(
+          acceptedPath,
+          JSON.stringify(acceptedCardIds)
+        );
+
+        const rejectedPath = `${dirPath}rejected_cards_${timestamp}.json`;
+        await FileSystem.writeAsStringAsync(
+          rejectedPath,
+          JSON.stringify(rejectedCardIds)
+        );
+
+        console.log("Data saved locally");
+      } else {
+        console.log("Skipping file operations on web");
+      }
+
+      // Prepare form data
+      const formData = new URLSearchParams({
+        [ENTRY_IDS.sessionId]: sessionId,
+        [ENTRY_IDS.acceptedCards]: JSON.stringify(acceptedCardIds),
+        [ENTRY_IDS.rejectedCards]: JSON.stringify(rejectedCardIds),
+        [ENTRY_IDS.categories]: JSON.stringify(selectedCategories),
+        [ENTRY_IDS.deviceInfo]: JSON.stringify({
+          platform: Platform.OS,
+          width,
+          height,
+          timestamp,
+        }),
+      }).toString();
+
+      // // Submit to Google Form
+      // const response = await fetch(`${FORM_URL}?${formData}`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/x-www-form-urlencoded",
+      //   },
+      // // });
+
+      // console.log("Data submitted to Google Form");
+    } catch (e) {
+      console.error("Failed to save or submit data", e);
+    }
+  };
+
+  // Set up effect to save data when component unmounts
+  useEffect(() => {
+    return () => {
+      if (acceptedCardIds.length > 0 || rejectedCardIds.length > 0) {
+        saveData();
+      }
+    };
+  }, [acceptedCardIds, rejectedCardIds]);
 
   useEffect(() => {
     if (!selectedCategories.length) return;
@@ -58,18 +142,26 @@ export default function GameScreen() {
     setCurrentCard(shuffled.length > 0 ? shuffled[0] : finalCard);
   }, [params.categories]);
 
+  // Save data periodically (every 5 swipes)
+  useEffect(() => {
+    const totalSwipes = acceptedCardIds.length + rejectedCardIds.length;
+    if (totalSwipes > 0 && totalSwipes % 5 === 0) {
+      saveData();
+    }
+  }, [acceptedCardIds, rejectedCardIds]);
+
   const getCategoryColor = (category: string): string => {
-    switch (category) {
+    switch (category.toLowerCase()) {
       case "real talk":
-        return "rgb(0, 158, 249)";
+        return "rgba(147, 197, 253, 0.85)"; // soft blue
       case "relationships":
-        return "rgba(47, 213, 69, 0.87)";
+        return "rgba(97, 185, 129, 0.85)"; // mint green
       case "sex":
-        return "rgba(240, 22, 22, 0.89)";
+        return "rgba(239, 68, 68, 0.9)"; // toned-down red
       case "dating":
-        return "rgba(236, 57, 195, 0.88)";
+        return "rgba(244, 114, 182, 0.9)"; // rose pink
       default:
-        return "#6a0dad";
+        return "#1f2937"; // fallback color
     }
   };
 
@@ -81,19 +173,21 @@ export default function GameScreen() {
     }).start(() => {
       if (!currentCard || remainingCards.length === 0) return;
 
+      if (direction === 1 && currentCard.id !== -1) {
+        setAcceptedCardIds((prev) => [...prev, currentCard.id]);
+      } else if (currentCard.id !== -1) {
+        setRejectedCardIds((prev) => [...prev, currentCard.id]);
+      }
+
       setRemainingCards((prev) => {
         const newDeck =
           direction === -1 ? [...prev.slice(1), prev[0]] : prev.slice(1);
-
-        console.log(
-          "AFTER Update - Setting Current Card to:",
-          newDeck[0]?.question || "null"
-        );
 
         setCurrentCard(newDeck.length > 0 ? newDeck[0] : null);
 
         // Navigate to home screen if the final card is swiped
         if (newDeck.length === 0 || newDeck[0]?.id === -1) {
+          saveData();
           setTimeout(() => router.replace("/"), 2000);
         }
 
@@ -160,20 +254,28 @@ export default function GameScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <LinearGradient
-        colors={["#F09819", "#FF512F"]}
+        colors={["#0f172a", "#1e293b"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
         style={styles.background}
       />
 
-      {/* 👇 All content sits ABOVE the hue glows */}
+      {/* 👇 All content sits ABOVE the hue glows
       <View style={styles.header}>
         <Ionicons
           name="arrow-back"
           size={32}
           color="white"
           style={styles.backButton}
-          onPress={() => router.back()}
+          onPress={() => {
+            // Save data before navigating back
+            if (acceptedCardIds.length > 0 || rejectedCardIds.length > 0) {
+              saveData();
+            }
+            router.back();
+          }}
         />
-      </View>
+      </View> */}
 
       <View style={styles.cardContainer}>
         {currentCard ? (
@@ -184,7 +286,7 @@ export default function GameScreen() {
               {
                 backgroundColor: getCategoryColor(currentCard.category),
                 width: width * 0.9,
-                height: height * 0.6,
+                height: height * 0.65,
                 transform: [
                   { translateX: pan.x },
                   {
@@ -199,10 +301,17 @@ export default function GameScreen() {
               },
             ]}
           >
-            <Text style={styles.categoryText}>
-              {currentCard.category.toUpperCase()}
-            </Text>
-            <Text style={styles.questionText}>{currentCard.question}</Text>
+            <Text style={styles.categoryText}>{currentCard.category}</Text>
+            <View
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                paddingHorizontal: 10,
+              }}
+            >
+              <Text style={styles.questionText}>{currentCard.question}</Text>
+            </View>
             <Text style={styles.logoText}>awkwrd</Text>
           </Animated.View>
         ) : gameEnded ? null : (
@@ -210,11 +319,11 @@ export default function GameScreen() {
         )}
       </View>
 
-      <View style={styles.footer}>
+      <Animated.View style={[styles.footer, { opacity: cardOpacity }]}>
         <Text style={styles.swipeHintText}>← Skip</Text>
         <Text style={styles.swipeHintText}>Swipe</Text>
         <Text style={styles.swipeHintText}>Next →</Text>
-      </View>
+      </Animated.View>
 
       {/* Modal stays on top */}
       <Modal visible={gameEnded} transparent animationType="fade">
@@ -222,11 +331,14 @@ export default function GameScreen() {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Game Over!</Text>
             <Text style={styles.modalText}>
-              You’ve gone through all the questions.
+              You've gone through all the questions.
             </Text>
             <TouchableOpacity
               style={styles.modalButton}
-              onPress={() => router.replace("/")}
+              onPress={() => {
+                saveData();
+                router.replace("/");
+              }}
             >
               <Text style={styles.modalButtonText}>Back to Home</Text>
             </TouchableOpacity>
