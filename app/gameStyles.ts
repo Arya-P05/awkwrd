@@ -146,6 +146,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#0f172a", // deep navy background
     paddingBottom: 30,
+    overflow: "hidden",
   },
 
   loadingText: {
