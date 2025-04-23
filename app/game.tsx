@@ -44,6 +44,14 @@ export default function GameScreen() {
     ? params.categories.split(",")
     : [];
 
+  const resetPan = () => {
+    Animated.timing(pan, {
+      toValue: { x: 0, y: 0 },
+      duration: 150,
+      useNativeDriver: true,
+    }).start();
+  };
+
   const [currentCard, setCurrentCard] = useState<Question | null>(null);
   const [remainingCards, setRemainingCards] = useState<Question[]>([]);
   const [gameEnded, setGameEnded] = useState(false);
@@ -220,11 +228,7 @@ export default function GameScreen() {
     onPanResponderRelease: (_, gesture) => {
       // Disable swiping if the current card is the final card
       if (currentCard?.id === -1) {
-        Animated.timing(pan, {
-          toValue: { x: 0, y: 0 },
-          duration: 150,
-          useNativeDriver: true,
-        }).start();
+        resetPan();
         return;
       }
 
@@ -236,11 +240,7 @@ export default function GameScreen() {
       } else if (gesture.dx < -threshold || gesture.vx < -velocityThreshold) {
         handleSwipeComplete(-1);
       } else {
-        Animated.timing(pan, {
-          toValue: { x: 0, y: 0 },
-          duration: 150,
-          useNativeDriver: true,
-        }).start();
+        resetPan();
       }
 
       Animated.timing(cardOpacity, {
