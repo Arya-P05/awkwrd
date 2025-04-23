@@ -35,9 +35,12 @@ export default function HomeScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <LinearGradient
-        colors={["#F09819", "#FF512F"]}
+        colors={["#0f172a", "#2a3a50"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
         style={styles.background}
       />
+
       <View style={styles.content}>
         <Text style={styles.title}>AWKWRD</Text>
         <Text style={styles.subtitle}>People you know. Stories you don't.</Text>

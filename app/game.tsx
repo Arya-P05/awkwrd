@@ -254,7 +254,7 @@ export default function GameScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <LinearGradient
-        colors={["#0f172a", "#1e293b"]}
+        colors={["#0f172a", "#2a3a50"]}
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
         style={styles.background}
