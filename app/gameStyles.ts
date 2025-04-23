@@ -183,6 +183,7 @@ const styles = StyleSheet.create({
     marginBottom: 12,
     textTransform: "uppercase",
     letterSpacing: 1,
+    textAlign: "center",
   },
 
   questionText: {
