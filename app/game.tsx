@@ -17,6 +17,7 @@ import styles from "./gameStyles";
 import { LinearGradient } from "expo-linear-gradient";
 import * as FileSystem from "expo-file-system";
 import { ENTRY_IDS, FORM_URL, FINAL_CARD } from "../constants/Feedback";
+import Header from "../components/Header";
 // import { db } from "../firebaseConfig";
 // import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
@@ -244,18 +245,15 @@ export default function GameScreen() {
         style={styles.background}
       />
 
-      <TouchableOpacity
-        style={styles.backButton}
-        onPress={async () => {
+      <Header
+        onBack={async () => {
           console.log("Back button pressed");
           if (acceptedCardIds.length > 0 || rejectedCardIds.length > 0) {
             await saveData();
           }
           router.back();
         }}
-      >
-        <Ionicons name="chevron-back-outline" size={24} color="white" />
-      </TouchableOpacity>
+      />
 
       <View style={styles.cardContainer}>
         {currentCard ? (
@@ -292,7 +290,7 @@ export default function GameScreen() {
         )}
       </View>
 
-      <Animated.View style={[styles.footer, { opacity: cardOpacity }]}>
+      <Animated.View style={styles.footer}>
         <Text style={styles.swipeHintText}>← Skip</Text>
         <Text style={styles.swipeHintText}>Swipe</Text>
         <Text style={styles.swipeHintText}>Next →</Text>

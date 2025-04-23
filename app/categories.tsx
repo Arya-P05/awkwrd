@@ -14,6 +14,7 @@ import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import { useCategory } from "../app/context/categoryContext";
+import Header from "../components/Header";
 
 const screenWidth = Dimensions.get("window").width;
 const boxSize = screenWidth > 768 ? screenWidth * 0.22 : screenWidth * 0.4;
@@ -78,66 +79,65 @@ export default function CategorySelectionScreen() {
         style={{ ...StyleSheet.absoluteFillObject, backgroundColor: "#0f172a" }}
       />
 
-      <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-        {/* <Ionicons name="arrow-back" size={32} color="white" /> */}
-        <Ionicons name="chevron-back-outline" size={24} color="white" />
-      </TouchableOpacity>
+      <Header />
 
-      <View style={styles.header}>
-        <Text style={styles.title}>Select Categories</Text>
-        <Text style={styles.subtitle}>Pick at least one to get started.</Text>
-      </View>
+      <View style={styles.contentContainer}>
+        <View style={styles.titleTextContainer}>
+          <Text style={styles.title}>Select Categories</Text>
+          <Text style={styles.subtitle}>Pick at least one to get started.</Text>
+        </View>
 
-      <View style={styles.categoryGrid}>
-        {CATEGORIES.map((category) => (
-          <TouchableOpacity
-            key={category.id}
-            style={[
-              styles.categoryBox,
-              {
-                backgroundColor: selectedCategories[category.id]
-                  ? category.colour
-                  : "rgba(255, 255, 255, 0.1)",
-                opacity: selectedCategories[category.id] ? 0.85 : 0.6,
-                width: Math.min(boxSize, maxBoxSize),
-                height: Math.min(boxSize, maxBoxSize),
-              },
-            ]}
-            onPress={() => toggleCategory(category.id)}
-          >
-            <Ionicons name={category.icon} size={30} color="white" />
-            <Text style={styles.categoryText}>{category.name}</Text>
-          </TouchableOpacity>
-        ))}
-      </View>
+        <View style={styles.categoryGrid}>
+          {CATEGORIES.map((category) => (
+            <TouchableOpacity
+              key={category.id}
+              style={[
+                styles.categoryBox,
+                {
+                  backgroundColor: selectedCategories[category.id]
+                    ? category.colour
+                    : "rgba(255, 255, 255, 0.1)",
+                  opacity: selectedCategories[category.id] ? 0.85 : 0.6,
+                  width: Math.min(boxSize, maxBoxSize),
+                  height: Math.min(boxSize, maxBoxSize),
+                },
+              ]}
+              onPress={() => toggleCategory(category.id)}
+            >
+              <Ionicons name={category.icon} size={30} color="white" />
+              <Text style={styles.categoryText}>{category.name}</Text>
+            </TouchableOpacity>
+          ))}
+        </View>
 
-      <TouchableOpacity
-        style={[
-          styles.startButton,
-          activeCategories.length === 0 && {
-            backgroundColor: "rgba(255, 255, 255, 0.1)",
-          },
-          activeCategories.length > 0 && {
-            backgroundColor: "white",
-          },
-        ]}
-        onPress={activeCategories.length > 0 ? startGame : undefined} // Disable press if no categories are selected
-      >
-        <Text
+        <TouchableOpacity
           style={[
-            styles.startButtonText,
+            styles.startButton,
             activeCategories.length === 0 && {
-              color: "white",
-              opacity: 0.5,
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
             },
             activeCategories.length > 0 && {
-              color: "black",
+              backgroundColor: "white",
             },
           ]}
+          onPress={activeCategories.length > 0 ? startGame : undefined} // Disable press if no categories are selected
         >
-          Start Game
-        </Text>
-      </TouchableOpacity>
+          <Text
+            style={[
+              styles.startButtonText,
+              activeCategories.length === 0 && {
+                color: "white",
+                opacity: 0.5,
+              },
+              activeCategories.length > 0 && {
+                color: "black",
+              },
+            ]}
+          >
+            Start Game
+          </Text>
+        </TouchableOpacity>
+      </View>
 
       {/* Modal for no category selected */}
       <Modal visible={modalVisible} transparent animationType="fade">
@@ -161,9 +161,34 @@ export default function CategorySelectionScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-  background: { ...StyleSheet.absoluteFillObject },
-  header: { alignItems: "center", marginBottom: 30, paddingHorizontal: 20 },
+  container: {
+    flex: 1,
+    backgroundColor: "#0f172a",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+
+  contentContainer: { flex: 1, justifyContent: "center", alignItems: "center" },
+
+  background: {
+    ...StyleSheet.absoluteFillObject,
+    backgroundColor: "#0f172a",
+  },
+
+  header: {
+    width: "100%",
+    paddingHorizontal: 20,
+    paddingTop: 10,
+    flexDirection: "row",
+    alignItems: "center",
+    opacity: 0.7,
+  },
+
+  titleTextContainer: {
+    alignItems: "center",
+    marginBottom: 30,
+    paddingHorizontal: 20,
+  },
   title: {
     fontSize: 30,
     fontWeight: "bold",

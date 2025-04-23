@@ -3,11 +3,9 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#0f172a",
+    flexDirection: "column",
     justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "#0f172a", // deep navy
-    paddingBottom: 30,
-    overflow: "hidden",
   },
 
   background: {
@@ -74,19 +72,18 @@ const styles = StyleSheet.create({
     color: "rgba(255, 255, 255, 0.3)",
   },
 
-  // Navigation
-  backButton: {
-    position: "absolute",
-    top: 60,
-    left: 20,
-    padding: 12,
-    zIndex: 999,
-  },
-
   counterText: {
     fontSize: 14,
     fontWeight: "500",
     color: "#9ca3af", // muted gray
+  },
+
+  header: {
+    width: "100%",
+    paddingHorizontal: 20,
+    flexDirection: "row",
+    alignItems: "center",
+    opacity: 0.7,
   },
 
   // Footer hints
@@ -95,8 +92,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     paddingHorizontal: 32,
-    paddingBottom: 20,
-    opacity: 1,
+    paddingBottom: 15,
   },
 
   swipeHintText: {
@@ -104,6 +100,7 @@ const styles = StyleSheet.create({
     fontWeight: "500",
     color: "#e5e7eb",
     textAlign: "center",
+    opacity: 0.7,
   },
 
   // Modal
