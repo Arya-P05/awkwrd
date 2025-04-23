@@ -27,12 +27,19 @@ interface Question {
 
 const FORM_URL =
   "https://docs.google.com/forms/d/e/1FAIpQLSdIRDSdSJ7hPsc84aAO9yJAZUAF6TTDAY35AC6QYmFsbfRuGw/formResponse";
+
 const ENTRY_IDS = {
   sessionId: "entry.60489562",
   acceptedCards: "entry.1651876338",
   rejectedCards: "entry.738247076",
   categories: "entry.1516522829",
   deviceInfo: "entry.1791082658",
+};
+
+const FINAL_CARD: Question = {
+  id: -1,
+  category: "",
+  question: "Cards finished. \n Taking you back home.",
 };
 
 export default function GameScreen() {
@@ -137,17 +144,10 @@ export default function GameScreen() {
 
     const shuffled = [...filteredQuestions].sort(() => Math.random() - 0.5);
 
-    // Add the final card to the deck
-    const finalCard = {
-      id: -1,
-      category: "",
-      question: "Cards finished. \n Taking you back home.",
-    };
-
     console.log("Initializing Game - Total Questions:", shuffled.length + 1);
 
-    setRemainingCards([...shuffled, finalCard]);
-    setCurrentCard(shuffled.length > 0 ? shuffled[0] : finalCard);
+    setRemainingCards([...shuffled, FINAL_CARD]);
+    setCurrentCard(shuffled.length > 0 ? shuffled[0] : FINAL_CARD);
   }, [params.categories]);
 
   // Save data periodically (every 5 swipes)
