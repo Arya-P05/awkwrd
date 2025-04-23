@@ -211,9 +211,7 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
 
-  backButton: {
-    marginLeft: 10,
-  },
+  backButton: { position: "absolute", top: 60, left: 20, padding: 12 },
 
   counterText: {
     color: "#9ca3af", // muted gray

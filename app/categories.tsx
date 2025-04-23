@@ -79,7 +79,8 @@ export default function CategorySelectionScreen() {
       />
 
       <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
-        <Ionicons name="arrow-back" size={32} color="white" />
+        {/* <Ionicons name="arrow-back" size={32} color="white" /> */}
+        <Ionicons name="chevron-back-outline" size={24} color="white" />
       </TouchableOpacity>
 
       <View style={styles.header}>

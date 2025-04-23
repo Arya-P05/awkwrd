@@ -260,22 +260,17 @@ export default function GameScreen() {
         style={styles.background}
       />
 
-      {/* 👇 All content sits ABOVE the hue glows
-      <View style={styles.header}>
-        <Ionicons
-          name="arrow-back"
-          size={32}
-          color="white"
-          style={styles.backButton}
-          onPress={() => {
-            // Save data before navigating back
-            if (acceptedCardIds.length > 0 || rejectedCardIds.length > 0) {
-              saveData();
-            }
-            router.back();
-          }}
-        />
-      </View> */}
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => {
+          if (acceptedCardIds.length > 0 || rejectedCardIds.length > 0) {
+            saveData();
+          }
+          router.back();
+        }}
+      >
+        <Ionicons name="chevron-back-outline" size={24} color="white" />
+      </TouchableOpacity>
 
       <View style={styles.cardContainer}>
         {currentCard ? (
