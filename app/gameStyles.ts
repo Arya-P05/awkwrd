@@ -31,15 +31,20 @@ const styles = StyleSheet.create({
   },
 
   card: {
-    width: "100%",
     padding: 28,
     borderRadius: 24,
-    backgroundColor: "#ef4444",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 12 },
     shadowOpacity: 0.25,
     shadowRadius: 24,
     elevation: 12,
+  },
+
+  cardContent: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingHorizontal: 10,
   },
 
   categoryText: {

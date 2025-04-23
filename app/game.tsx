@@ -298,14 +298,7 @@ export default function GameScreen() {
             ]}
           >
             <Text style={styles.categoryText}>{currentCard.category}</Text>
-            <View
-              style={{
-                flex: 1,
-                justifyContent: "center",
-                alignItems: "center",
-                paddingHorizontal: 10,
-              }}
-            >
+            <View style={styles.cardContent}>
               <Text style={styles.questionText}>{currentCard.question}</Text>
             </View>
             <Text style={styles.logoText}>awkwrd</Text>
