@@ -97,15 +97,15 @@ export default function GameScreen() {
         }),
       }).toString();
 
-      // // Submit to Google Form
-      // const response = await fetch(`${FORM_URL}?${formData}`, {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/x-www-form-urlencoded",
-      //   },
-      // // });
+      // Submit to Google Form
+      const response = await fetch(`${FORM_URL}?${formData}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+      });
 
-      // console.log("Data submitted to Google Form");
+      console.log("Data submitted to Google Form");
     } catch (e) {
       console.error("Failed to save or submit data", e);
     }
@@ -262,9 +262,10 @@ export default function GameScreen() {
 
       <TouchableOpacity
         style={styles.backButton}
-        onPress={() => {
+        onPress={async () => {
+          console.log("Back button pressed");
           if (acceptedCardIds.length > 0 || rejectedCardIds.length > 0) {
-            saveData();
+            await saveData();
           }
           router.back();
         }}

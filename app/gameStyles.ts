@@ -153,21 +153,20 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: "center",
     marginTop: 50,
-    color: "#e5e7eb", // soft white
+    color: "#e5e7eb",
   },
 
   cardContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 1,
     paddingHorizontal: 20,
   },
 
   card: {
     borderRadius: 24,
     padding: 28,
-    backgroundColor: "#ef4444", // red card example
+    backgroundColor: "#ef4444",
     shadowColor: "#000",
     shadowOffset: { width: 0, height: 12 },
     shadowOpacity: 0.25,
@@ -177,7 +176,7 @@ const styles = StyleSheet.create({
   },
 
   categoryText: {
-    color: "#fcd34d", // warm yellow
+    color: "#fcd34d",
     fontSize: 14,
     fontWeight: "600",
     marginBottom: 12,
@@ -211,7 +210,13 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
 
-  backButton: { position: "absolute", top: 60, left: 20, padding: 12 },
+  backButton: {
+    position: "absolute",
+    top: 60,
+    left: 20,
+    padding: 12,
+    zIndex: 999,
+  },
 
   counterText: {
     color: "#9ca3af", // muted gray
