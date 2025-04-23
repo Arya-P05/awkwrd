@@ -16,31 +16,15 @@ import { Ionicons } from "@expo/vector-icons";
 import styles from "./gameStyles";
 import { LinearGradient } from "expo-linear-gradient";
 import * as FileSystem from "expo-file-system";
-import { db } from "../firebaseConfig";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { ENTRY_IDS, FORM_URL, FINAL_CARD } from "../constants/Feedback";
+// import { db } from "../firebaseConfig";
+// import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 interface Question {
   id: number;
   category: string;
   question: string;
 }
-
-const FORM_URL =
-  "https://docs.google.com/forms/d/e/1FAIpQLSdIRDSdSJ7hPsc84aAO9yJAZUAF6TTDAY35AC6QYmFsbfRuGw/formResponse";
-
-const ENTRY_IDS = {
-  sessionId: "entry.60489562",
-  acceptedCards: "entry.1651876338",
-  rejectedCards: "entry.738247076",
-  categories: "entry.1516522829",
-  deviceInfo: "entry.1791082658",
-};
-
-const FINAL_CARD: Question = {
-  id: -1,
-  category: "",
-  question: "Cards finished. \n Taking you back home.",
-};
 
 export default function GameScreen() {
   const params = useLocalSearchParams<{ categories?: string }>();
