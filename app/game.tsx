@@ -250,6 +250,7 @@ export default function GameScreen() {
           console.log("Back button pressed");
           if (acceptedCardIds.length > 0 || rejectedCardIds.length > 0) {
             await saveData();
+            console.log("Data saved before going back");
           }
           router.back();
         }}
