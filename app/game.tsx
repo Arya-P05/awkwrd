@@ -10,9 +10,8 @@ import {
   TouchableOpacity,
   Platform,
 } from "react-native";
-import { useLocalSearchParams, useRouter, router } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 import questions from "../questions.json";
-import { Ionicons } from "@expo/vector-icons";
 import styles from "./gameStyles";
 import { LinearGradient } from "expo-linear-gradient";
 import * as FileSystem from "expo-file-system";
