@@ -54,7 +54,7 @@ export default function HomeScreen() {
         style={styles.settingsButton}
         onPress={() => router.push("/categories")}
       >
-        <Ionicons name="settings-outline" size={30} color="white" />
+        <Ionicons name="game-controller-outline" size={30} color="white" />
       </TouchableOpacity>
 
       <TouchableOpacity
