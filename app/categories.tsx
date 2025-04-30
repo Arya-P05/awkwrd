@@ -76,7 +76,7 @@ export default function CategorySelectionScreen() {
         colors={["#0f172a", "#2a3a50"]}
         start={{ x: 0, y: 0 }}
         end={{ x: 0, y: 1 }}
-        style={{ ...StyleSheet.absoluteFillObject, backgroundColor: "#0f172a" }}
+        style={styles.background}
       />
 
       <Header />

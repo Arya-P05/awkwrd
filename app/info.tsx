@@ -12,6 +12,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import { useRouter } from "expo-router";
 import { LinearGradient } from "expo-linear-gradient";
+import Header from "@/components/Header";
 
 const instructions = [
   "Pick the categories you're in the mood for. Real talk? Dating? Something spicier?",
@@ -29,76 +30,54 @@ export default function SettingsScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <LinearGradient
-        colors={["#F09819", "#FF512F"]}
+        colors={["#0f172a", "#2a3a50"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0, y: 1 }}
         style={styles.background}
       />
 
-      {/* Back Button */}
-      <View style={styles.header}>
-        <TouchableOpacity
-          style={styles.backButton}
-          onPress={() => router.back()}
-        >
-          <Ionicons name="arrow-back" size={32} color="white" />
-        </TouchableOpacity>
-      </View>
+      <Header />
 
-      <ScrollView
-        contentContainerStyle={styles.scrollContent}
-        showsVerticalScrollIndicator={false}
-      >
+      <ScrollView contentContainerStyle={styles.scrollContent}>
         {/* About Section */}
         <View style={styles.card}>
-          <Text style={styles.title}>AWKWRD</Text>
-          <Text style={styles.tagline}>The card game that gets real.</Text>
+          <Text style={styles.aboutTitle}>AWKWRD</Text>
+          <Text style={styles.tagline}>
+            People you know. Stories you don't.
+          </Text>
           <Text style={styles.aboutText}>
-            AWKWRD is a conversation card game with 140 questions made to deepen
-            connections and stimulate memorable moment all while having a good
-            time.
+            A conversation card game with 140 questions made to deepen
+            connections and stimulate memorable moments.
           </Text>
           <Text style={styles.aboutText}>
             Don't be afriad to go deep, get personal, and be honest. Ultimately
-            it doesn't matter how many cards you get through. The point of the
-            game is to engage in meaninful conversations.
+            it doesn't matter how many cards you get through. The point is
+            having true conversations.
           </Text>
         </View>
 
+        {/* Term of Service Section */}
         <View style={styles.card}>
-          <Text style={styles.sectionTitle}>How to Play</Text>
-          {instructions.map((instruction, index) => {
-            if (index === 0) {
-              return (
-                <View key={index} style={styles.instructionRow}>
-                  <Text style={styles.bullet1}>{index + 1}.</Text>
-                  <Text style={styles.instruction}>{instruction}</Text>
-                </View>
-              );
-            } else {
-              return (
-                <View key={index} style={styles.instructionRow}>
-                  <Text style={styles.bullet}>{index + 1}.</Text>
-                  <Text style={styles.instruction}>{instruction}</Text>
-                </View>
-              );
-            }
-          })}
+          <View style={styles.tosHeader}>
+            <Ionicons name="document-outline" size={26} color="white" />
+            <Text style={styles.tosTitle}>Terms of Service</Text>
+          </View>
+          <Text style={styles.tagline}>Last Updated: March 2025</Text>
+          <Text style={styles.aboutText}>
+            AWKWRD is for 18 or older and entertainment purposes only. Any
+            gameplay or personal information is not shared with third parties.
+          </Text>
+          <Text style={styles.aboutText}>
+            You agree NOT to copy, modify, or distribute AWKWRD without
+            permission.
+          </Text>
         </View>
 
         {/* Support & Legal */}
         <View style={styles.card}>
-          <Text style={styles.sectionTitle}>Support & Legal</Text>
-
           <TouchableOpacity style={styles.optionRow} onPress={openEmail}>
             <Ionicons name="mail-outline" size={26} color="white" />
             <Text style={styles.optionText}>Contact Support</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            style={styles.optionRow}
-            onPress={() => router.push("/terms-of-service")}
-          >
-            <Ionicons name="document-outline" size={26} color="white" />
-            <Text style={styles.optionText}>Terms of Service</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -112,12 +91,12 @@ const styles = StyleSheet.create({
   },
   background: {
     ...StyleSheet.absoluteFillObject,
+    backgroundColor: "#0f172a",
   },
   scrollContent: {
     flexGrow: 1,
     justifyContent: "center",
     alignItems: "center",
-    paddingBottom: 40,
   },
   header: {
     width: "100%",
@@ -127,19 +106,22 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     marginTop: 15,
   },
+  tosHeader: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
   backButton: {
     marginLeft: 10,
   },
   card: {
-    backgroundColor: "rgba(255, 255, 255, 0.15)",
+    // backgroundColor: "rgba(255, 255, 255, 0.15)",
     borderRadius: 15,
     padding: 20,
-    marginVertical: 15,
+    marginVertical: 5,
     width: "85%",
-    alignItems: "center",
     elevation: 5,
   },
-  title: {
+  aboutTitle: {
     fontSize: 32,
     fontWeight: "bold",
     color: "white",
@@ -147,10 +129,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
     letterSpacing: 2,
   },
+  tosTitle: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "white",
+    textTransform: "uppercase",
+    textAlign: "center",
+    letterSpacing: 2,
+    marginLeft: 8,
+  },
   tagline: {
-    fontSize: 16,
     color: "rgba(255, 255, 255, 0.85)",
+    fontSize: 14,
     marginTop: 5,
+    marginBottom: 12,
     textAlign: "center",
     fontStyle: "italic",
   },
@@ -180,27 +172,5 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     color: "white",
     fontWeight: "500",
-  },
-  instructionRow: {
-    flexDirection: "row",
-    alignItems: "flex-start",
-    marginTop: 10,
-  },
-  bullet: {
-    fontSize: 16,
-    color: "white",
-    fontWeight: "bold",
-    marginRight: 8,
-  },
-  bullet1: {
-    fontSize: 16,
-    color: "white",
-    fontWeight: "bold",
-    marginRight: 10,
-  },
-  instruction: {
-    fontSize: 16,
-    color: "white",
-    flexShrink: 1,
   },
 });
