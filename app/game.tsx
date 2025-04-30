@@ -53,7 +53,10 @@ export default function GameScreen() {
   const pan = useRef(new Animated.ValueXY()).current;
   const cardOpacity = useRef(new Animated.Value(1)).current;
 
-  const saveData = async () => {
+  const saveData = async (
+    accepted: number[] = acceptedCardIds,
+    rejected: number[] = rejectedCardIds
+  ) => {
     try {
       const timestamp = new Date().toISOString();
       const sessionId = Math.random().toString(36).substring(2, 15);
@@ -68,13 +71,13 @@ export default function GameScreen() {
         const acceptedPath = `${dirPath}accepted_cards_${timestamp}.json`;
         await FileSystem.writeAsStringAsync(
           acceptedPath,
-          JSON.stringify(acceptedCardIds)
+          JSON.stringify(accepted)
         );
 
         const rejectedPath = `${dirPath}rejected_cards_${timestamp}.json`;
         await FileSystem.writeAsStringAsync(
           rejectedPath,
-          JSON.stringify(rejectedCardIds)
+          JSON.stringify(rejected)
         );
 
         console.log("Data saved locally");
@@ -84,8 +87,8 @@ export default function GameScreen() {
 
       const formData = new URLSearchParams({
         [ENTRY_IDS.sessionId]: sessionId,
-        [ENTRY_IDS.acceptedCards]: JSON.stringify(acceptedCardIds),
-        [ENTRY_IDS.rejectedCards]: JSON.stringify(rejectedCardIds),
+        [ENTRY_IDS.acceptedCards]: JSON.stringify(accepted),
+        [ENTRY_IDS.rejectedCards]: JSON.stringify(rejected),
         [ENTRY_IDS.categories]: JSON.stringify(selectedCategories),
         [ENTRY_IDS.deviceInfo]: JSON.stringify({
           platform: Platform.OS,
@@ -169,7 +172,7 @@ export default function GameScreen() {
         SAVE_THRESHOLDS.includes(totalSwipes) &&
         !saveMilestones.includes(totalSwipes)
       ) {
-        saveData();
+        saveData(newAccepted, newRejected);
         setSaveMilestones((prev) => [...prev, totalSwipes]);
       }
 
@@ -180,7 +183,7 @@ export default function GameScreen() {
         setCurrentCard(newDeck.length > 0 ? newDeck[0] : null);
 
         if (newDeck.length === 0 || newDeck[0]?.id === -1) {
-          saveData();
+          saveData(newAccepted, newRejected);
           setTimeout(() => router.replace("/"), 2000);
         }
 
