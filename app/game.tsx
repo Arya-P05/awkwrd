@@ -17,14 +17,14 @@ import { LinearGradient } from "expo-linear-gradient";
 import * as FileSystem from "expo-file-system";
 import { ENTRY_IDS, FORM_URL, FINAL_CARD } from "../constants/Feedback";
 import Header from "../components/Header";
-// import { db } from "../firebaseConfig";
-// import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 interface Question {
   id: number;
   category: string;
   question: string;
 }
+
+const SAVE_THRESHOLDS = [10, 25, 50];
 
 export default function GameScreen() {
   const params = useLocalSearchParams<{ categories?: string }>();
@@ -46,19 +46,19 @@ export default function GameScreen() {
   const [currentCard, setCurrentCard] = useState<Question | null>(null);
   const [remainingCards, setRemainingCards] = useState<Question[]>([]);
   const [gameEnded, setGameEnded] = useState(false);
-  const pan = useRef(new Animated.ValueXY()).current;
-  const cardOpacity = useRef(new Animated.Value(1)).current;
   const [acceptedCardIds, setAcceptedCardIds] = useState<number[]>([]);
   const [rejectedCardIds, setRejectedCardIds] = useState<number[]>([]);
+  const [saveMilestones, setSaveMilestones] = useState<number[]>([]);
 
-  // Save data function to be called periodically and on unmount
+  const pan = useRef(new Animated.ValueXY()).current;
+  const cardOpacity = useRef(new Animated.Value(1)).current;
+
   const saveData = async () => {
     try {
       const timestamp = new Date().toISOString();
       const sessionId = Math.random().toString(36).substring(2, 15);
 
       if (Platform.OS !== "web") {
-        // Only perform file operations on native platforms
         const dirPath = `${FileSystem.documentDirectory}game_data/`;
         const dirInfo = await FileSystem.getInfoAsync(dirPath);
         if (!dirInfo.exists) {
@@ -82,7 +82,6 @@ export default function GameScreen() {
         console.log("Skipping file operations on web");
       }
 
-      // Prepare form data
       const formData = new URLSearchParams({
         [ENTRY_IDS.sessionId]: sessionId,
         [ENTRY_IDS.acceptedCards]: JSON.stringify(acceptedCardIds),
@@ -96,12 +95,9 @@ export default function GameScreen() {
         }),
       }).toString();
 
-      // Submit to Google Form
-      const response = await fetch(`${FORM_URL}?${formData}`, {
+      await fetch(`${FORM_URL}?${formData}`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
       });
 
       console.log("Data submitted to Google Form");
@@ -110,7 +106,6 @@ export default function GameScreen() {
     }
   };
 
-  // Set up effect to save data when component unmounts
   useEffect(() => {
     return () => {
       if (acceptedCardIds.length > 0 || rejectedCardIds.length > 0) {
@@ -134,26 +129,18 @@ export default function GameScreen() {
     setCurrentCard(shuffled.length > 0 ? shuffled[0] : FINAL_CARD);
   }, [params.categories]);
 
-  // Save data periodically (every 5 swipes)
-  useEffect(() => {
-    const totalSwipes = acceptedCardIds.length + rejectedCardIds.length;
-    if (totalSwipes > 0 && totalSwipes % 5 === 0) {
-      saveData();
-    }
-  }, [acceptedCardIds, rejectedCardIds]);
-
   const getCategoryColor = (category: string): string => {
     switch (category.toLowerCase()) {
       case "real talk":
-        return "rgba(147, 197, 253, 0.85)"; // soft blue
+        return "rgba(147, 197, 253, 0.85)";
       case "relationships":
-        return "rgba(97, 185, 129, 0.85)"; // mint green
+        return "rgba(97, 185, 129, 0.85)";
       case "sex":
-        return "rgba(239, 68, 68, 0.9)"; // toned-down red
+        return "rgba(239, 68, 68, 0.9)";
       case "dating":
-        return "rgba(244, 114, 182, 0.9)"; // rose pink
+        return "rgba(244, 114, 182, 0.9)";
       default:
-        return "#1f2937"; // fallback color
+        return "#1f2937";
     }
   };
 
@@ -165,10 +152,25 @@ export default function GameScreen() {
     }).start(() => {
       if (!currentCard || remainingCards.length === 0) return;
 
+      let newAccepted = acceptedCardIds;
+      let newRejected = rejectedCardIds;
+
       if (direction === 1 && currentCard.id !== -1) {
-        setAcceptedCardIds((prev) => [...prev, currentCard.id]);
+        newAccepted = [...acceptedCardIds, currentCard.id];
+        setAcceptedCardIds(newAccepted);
       } else if (currentCard.id !== -1) {
-        setRejectedCardIds((prev) => [...prev, currentCard.id]);
+        newRejected = [...rejectedCardIds, currentCard.id];
+        setRejectedCardIds(newRejected);
+      }
+
+      const totalSwipes = newAccepted.length + newRejected.length;
+
+      if (
+        SAVE_THRESHOLDS.includes(totalSwipes) &&
+        !saveMilestones.includes(totalSwipes)
+      ) {
+        saveData();
+        setSaveMilestones((prev) => [...prev, totalSwipes]);
       }
 
       setRemainingCards((prev) => {
@@ -177,7 +179,6 @@ export default function GameScreen() {
 
         setCurrentCard(newDeck.length > 0 ? newDeck[0] : null);
 
-        // Navigate to home screen if the final card is swiped
         if (newDeck.length === 0 || newDeck[0]?.id === -1) {
           saveData();
           setTimeout(() => router.replace("/"), 2000);
@@ -193,16 +194,13 @@ export default function GameScreen() {
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
     onPanResponderMove: (event, gestureState) => {
-      // Prevent any movement if the current card is the final card
       if (currentCard?.id === -1) return;
-
       Animated.event([null, { dx: pan.x }], {
         useNativeDriver: false,
       })(event, gestureState);
     },
     onPanResponderGrant: () => {
       if (currentCard?.id === -1) return;
-
       Animated.timing(cardOpacity, {
         toValue: 0.5,
         duration: 150,
@@ -210,7 +208,6 @@ export default function GameScreen() {
       }).start();
     },
     onPanResponderRelease: (_, gesture) => {
-      // Disable swiping if the current card is the final card
       if (currentCard?.id === -1) {
         resetPan();
         return;
@@ -296,7 +293,6 @@ export default function GameScreen() {
         <Text style={styles.swipeHintText}>Next →</Text>
       </Animated.View>
 
-      {/* Modal stays on top */}
       <Modal visible={gameEnded} transparent animationType="fade">
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
