@@ -1,0 +1,702 @@
+[
+  {
+    "id": 1,
+    "category": "sex",
+    "question": "﻿Rate your overall drive on a scale from 1-10."
+  },
+  {
+    "id": 2,
+    "category": "sex",
+    "question": "Lights on or lights off?"
+  },
+  {
+    "id": 3,
+    "category": "sex",
+    "question": "Where is the craziest place you’ve had sex?"
+  },
+  {
+    "id": 4,
+    "category": "sex",
+    "question": "Would you accept below average sex if everything else in the relationship was perfect?"
+  },
+  {
+    "id": 5,
+    "category": "sex",
+    "question": "Are you comfortable giving feedback during or after sex?"
+  },
+  {
+    "id": 6,
+    "category": "sex",
+    "question": "If your identity could remain anonymous would you go to a sex party?"
+  },
+  {
+    "id": 7,
+    "category": "sex",
+    "question": "When was the last time you had mind-blowing sex?"
+  },
+  {
+    "id": 8,
+    "category": "sex",
+    "question": "Does sex ever feel like a burden?"
+  },
+  {
+    "id": 9,
+    "category": "sex",
+    "question": "What do you think about your partner discussing your sex life with their friends?"
+  },
+  {
+    "id": 10,
+    "category": "sex",
+    "question": "How long should sex last?"
+  },
+  {
+    "id": 11,
+    "category": "sex",
+    "question": "If you could only have sex in one position for the rest of your life, what would it be?"
+  },
+  {
+    "id": 12,
+    "category": "sex",
+    "question": "For you, does having sex depend on time spent or attraction?"
+  },
+  {
+    "id": 13,
+    "category": "sex",
+    "question": "Have you ever received an STD from someone you trusted?"
+  },
+  {
+    "id": 14,
+    "category": "sex",
+    "question": "Excluding your partner, out of anyone in the world, who would you want to have sex with?"
+  },
+  {
+    "id": 15,
+    "category": "sex",
+    "question": "What is the appropriate interval before starting round two?"
+  },
+  {
+    "id": 16,
+    "category": "sex",
+    "question": "What would you do if someone farted during sex?"
+  },
+  {
+    "id": 17,
+    "category": "sex",
+    "question": "Is there anything that’s entirely off the table?"
+  },
+  {
+    "id": 18,
+    "category": "sex",
+    "question": "Name the top song on your sex playlist?"
+  },
+  {
+    "id": 19,
+    "category": "sex",
+    "question": "Do you need to be emotionally connected with someone to have sex with them?"
+  },
+  {
+    "id": 20,
+    "category": "sex",
+    "question": "How do you feel about phone sex?"
+  },
+  {
+    "id": 21,
+    "category": "sex",
+    "question": "Did you ever discuss sex with your family growing up? How will you handle those conversions in your household?"
+  },
+  {
+    "id": 22,
+    "category": "sex",
+    "question": "Do you have a sex policy for a first date?"
+  },
+  {
+    "id": 23,
+    "category": "sex",
+    "question": "Have you ever had a hoe phase or player phase? Did you enjoy it?"
+  },
+  {
+    "id": 24,
+    "category": "sex",
+    "question": "How do you feel about sucking toes?"
+  },
+  {
+    "id": 25,
+    "category": "sex",
+    "question": "How do sex and intimacy differ?"
+  },
+  {
+    "id": 26,
+    "category": "sex",
+    "question": "List your non-sexual turn ons."
+  },
+  {
+    "id": 27,
+    "category": "sex",
+    "question": "Does size matter? What sizes are good?"
+  },
+  {
+    "id": 28,
+    "category": "sex",
+    "question": "What is one of your sexual fantasies?"
+  },
+  {
+    "id": 29,
+    "category": "sex",
+    "question": "Quickies are fun, but how do you tell your partner the quickies are too quick?"
+  },
+  {
+    "id": 30,
+    "category": "sex",
+    "question": "Nude pics? Yay or nay?"
+  },
+  {
+    "id": 31,
+    "category": "sex",
+    "question": "How did you learn about sex?"
+  },
+  {
+    "id": 32,
+    "category": "sex",
+    "question": "What’s the most awkward sexual situation you’ve ever found yourself in?"
+  },
+  {
+    "id": 33,
+    "category": "sex",
+    "question": "What’s one thing you could do to improve your sex life?"
+  },
+  {
+    "id": 34,
+    "category": "sex",
+    "question": "What’s the sexiest part of your body?"
+  },
+  {
+    "id": 35,
+    "category": "sex",
+    "question": "What age did you lose your virginity?"
+  },
+  {
+    "id": 36,
+    "category": "dating",
+    "question": "﻿Have you ever used a dating app? How was the experience?"
+  },
+  {
+    "id": 37,
+    "category": "dating",
+    "question": "Butt injections. Yes or no? What about other cosmetic plastic surgeries?"
+  },
+  {
+    "id": 38,
+    "category": "dating",
+    "question": "Are you keeping a picture of your ex on social media? What about your camera roll?"
+  },
+  {
+    "id": 39,
+    "category": "dating",
+    "question": "How did your last relationship end and are you two still f*ckin?"
+  },
+  {
+    "id": 40,
+    "category": "dating",
+    "question": "What is your type?"
+  },
+  {
+    "id": 41,
+    "category": "dating",
+    "question": "Ask each person in the group. How many times do you think I’d call my ex after a breakup?"
+  },
+  {
+    "id": 42,
+    "category": "dating",
+    "question": "How late is too late to show up for the first date?"
+  },
+  {
+    "id": 43,
+    "category": "dating",
+    "question": "How do you end a casual situationship? Ghost, slow fade, or direct and honest?"
+  },
+  {
+    "id": 44,
+    "category": "dating",
+    "question": "How did you process your last breakup?"
+  },
+  {
+    "id": 45,
+    "category": "dating",
+    "question": "Tell us about your worst date?"
+  },
+  {
+    "id": 46,
+    "category": "dating",
+    "question": "Rank these in order of priority: Personality, looks, and money."
+  },
+  {
+    "id": 47,
+    "category": "dating",
+    "question": "You don’t want to break up over text; that isn’t classy. So, where are the best places to break up?"
+  },
+  {
+    "id": 48,
+    "category": "dating",
+    "question": "Have you ever cheated or been cheated on? What happened?"
+  },
+  {
+    "id": 49,
+    "category": "dating",
+    "question": "When can you post your relationship on social media?"
+  },
+  {
+    "id": 50,
+    "category": "dating",
+    "question": "When would you share the login to your streaming platforms?"
+  },
+  {
+    "id": 51,
+    "category": "dating",
+    "question": "Is your partner allowed to workout with the sex they’re attracted to?"
+  },
+  {
+    "id": 52,
+    "category": "dating",
+    "question": "Would you date someone with kids? Why or why not?"
+  },
+  {
+    "id": 53,
+    "category": "dating",
+    "question": "Would you date a coworker and does seniority matter?"
+  },
+  {
+    "id": 54,
+    "category": "dating",
+    "question": "Does your family have any issues with you dating someone from a different ethnic background? If yes, would you do it anyway?"
+  },
+  {
+    "id": 55,
+    "category": "dating",
+    "question": "According to your friends, are your dating standards too low, too high, or just right?"
+  },
+  {
+    "id": 56,
+    "category": "dating",
+    "question": "Your friend or sibling is dating someone, but they can do better. Do you say something?"
+  },
+  {
+    "id": 57,
+    "category": "dating",
+    "question": "Do you want to have kids? Why or why not? If yes, what is the ideal age?"
+  },
+  {
+    "id": 58,
+    "category": "dating",
+    "question": "How much money are you willing to spend on the first date?"
+  },
+  {
+    "id": 59,
+    "category": "dating",
+    "question": "Which phase of dating makes open darting okay?"
+  },
+  {
+    "id": 60,
+    "category": "dating",
+    "question": "Is ghosting ever acceptable?"
+  },
+  {
+    "id": 61,
+    "category": "dating",
+    "question": "Do you believe in second chances for bad first dates?"
+  },
+  {
+    "id": 62,
+    "category": "dating",
+    "question": "At what point do you have the “so what are we?” talk?"
+  },
+  {
+    "id": 63,
+    "category": "dating",
+    "question": "Ask your date, what made you ask me out?"
+  },
+  {
+    "id": 64,
+    "category": "dating",
+    "question": "Are you letting someone fly you out (all expenses paid) on the second date?"
+  },
+  {
+    "id": 65,
+    "category": "dating",
+    "question": "How would you react if you discovered your friend is dating your ex?"
+  },
+  {
+    "id": 66,
+    "category": "dating",
+    "question": "Have you ever taken part in an affair? Did you know beforehand?"
+  },
+  {
+    "id": 67,
+    "category": "dating",
+    "question": "Ask each person in the group. What do you think my love language is?"
+  },
+  {
+    "id": 68,
+    "category": "dating",
+    "question": "Monogamous dating or roster vibes?"
+  },
+  {
+    "id": 69,
+    "category": "dating",
+    "question": "Dinner is over, the waiter asks, together or separate? What’s it going to be?"
+  },
+  {
+    "id": 70,
+    "category": "dating",
+    "question": "It is the most wonderful time of the year, are you inviting your partner over for the holidays?"
+  },
+  {
+    "id": 71,
+    "category": "relationships",
+    "question": "﻿If you could erase an ex from your memory, would you do it?"
+  },
+  {
+    "id": 72,
+    "category": "relationships",
+    "question": "Would you move to a new city for your partner? What are the key factors?"
+  },
+  {
+    "id": 73,
+    "category": "relationships",
+    "question": "How has your partner made you a better person?"
+  },
+  {
+    "id": 74,
+    "category": "relationships",
+    "question": "Tell a story. How did you and your partner meet?"
+  },
+  {
+    "id": 75,
+    "category": "relationships",
+    "question": "When is it okay to lie to your partner?"
+  },
+  {
+    "id": 76,
+    "category": "relationships",
+    "question": "Without you in the equation, could you see a friendship between your ex and your current boo?"
+  },
+  {
+    "id": 77,
+    "category": "relationships",
+    "question": "What is the next milestone for you and your partner?"
+  },
+  {
+    "id": 78,
+    "category": "relationships",
+    "question": "How has your parent’s relationship impacted your love life?"
+  },
+  {
+    "id": 79,
+    "category": "relationships",
+    "question": "Would you marry someone with opposing political views?"
+  },
+  {
+    "id": 80,
+    "category": "relationships",
+    "question": "Is it okay to watch porn while in a relationship?"
+  },
+  {
+    "id": 81,
+    "category": "relationships",
+    "question": "Should you have the password to your partner’s phone?"
+  },
+  {
+    "id": 82,
+    "category": "relationships",
+    "question": "What are your thoughts on signing a prenup?"
+  },
+  {
+    "id": 83,
+    "category": "relationships",
+    "question": "Sometimes love isn’t enough. What is missing in your relationship? "
+  },
+  {
+    "id": 84,
+    "category": "relationships",
+    "question": "Do you stalk your exes on social media?"
+  },
+  {
+    "id": 85,
+    "category": "relationships",
+    "question": "Would you marry someone with a low credit score?"
+  },
+  {
+    "id": 86,
+    "category": "relationships",
+    "question": "Has a friend or lover ever used their mental health as a crutch to take advantage of you?"
+  },
+  {
+    "id": 87,
+    "category": "relationships",
+    "question": "Do you believe in gender roles?"
+  },
+  {
+    "id": 88,
+    "category": "relationships",
+    "question": "Are you open to interracial relationships? What about marriage?"
+  },
+  {
+    "id": 89,
+    "category": "relationships",
+    "question": "Are you open to a long distance relationship? What are your ground rules?"
+  },
+  {
+    "id": 90,
+    "category": "relationships",
+    "question": "What have you sacrificed for your relationship?"
+  },
+  {
+    "id": 91,
+    "category": "relationships",
+    "question": "Have you ever fallen out of love and stayed in the relationship anyway?"
+  },
+  {
+    "id": 92,
+    "category": "relationships",
+    "question": "Should relationships be easy?"
+  },
+  {
+    "id": 93,
+    "category": "relationships",
+    "question": "How would you manage finances in a relationship? Join, separate, or somewhere in between?"
+  },
+  {
+    "id": 94,
+    "category": "relationships",
+    "question": "How important is it to raise your children with your spiritual beliefs?"
+  },
+  {
+    "id": 95,
+    "category": "relationships",
+    "question": "How would you handle a surprise pregnancy? What if you're not in love?"
+  },
+  {
+    "id": 96,
+    "category": "relationships",
+    "question": "What is something your partner wants you to be more thoughtful about?"
+  },
+  {
+    "id": 97,
+    "category": "relationships",
+    "question": "Your lover doesn’t meet your parent’s standards. You love them anyway, but will your love be good enough?"
+  },
+  {
+    "id": 98,
+    "category": "relationships",
+    "question": "Someone leaves the sexy smirk emoji in your partner's comments. Are you going to ask them about the person?"
+  },
+  {
+    "id": 99,
+    "category": "relationships",
+    "question": "Does it matter who brings home the bread?"
+  },
+  {
+    "id": 100,
+    "category": "relationships",
+    "question": "When do you expect to get the keys to your partner's apartment? Would you feel some type of way if it takes longer than expected?"
+  },
+  {
+    "id": 101,
+    "category": "relationships",
+    "question": "Friendships with exes? Is it all love or no chance in hell? Is it different for a one-time hookup?"
+  },
+  {
+    "id": 102,
+    "category": "relationships",
+    "question": "Your best friend and your partner aren’t vibing. What do you do?"
+  },
+  {
+    "id": 103,
+    "category": "relationships",
+    "question": "Ask each person in the group. What about me annoys you the most?"
+  },
+  {
+    "id": 104,
+    "category": "relationships",
+    "question": "Ask each person in the group. What relationship advice would you give me?"
+  },
+  {
+    "id": 105,
+    "category": "relationships",
+    "question": "Ask each person in the group. How can I communicate better?"
+  },
+  {
+    "id": 106,
+    "category": "real talk",
+    "question": "﻿Are your parents still in love? Does it matter to you now?"
+  },
+  {
+    "id": 107,
+    "category": "real talk",
+    "question": "Do you brush before or after you floss?"
+  },
+  {
+    "id": 108,
+    "category": "real talk",
+    "question": "Have you ever gone to therapy? If not, are you open to it?"
+  },
+  {
+    "id": 109,
+    "category": "real talk",
+    "question": "If you could fix one world issue, what would it be?"
+  },
+  {
+    "id": 110,
+    "category": "real talk",
+    "question": "When was the last time you cried?"
+  },
+  {
+    "id": 111,
+    "category": "real talk",
+    "question": "Do you believe you’ve met your soulmate?"
+  },
+  {
+    "id": 112,
+    "category": "real talk",
+    "question": "If you could snap your fingers and change one thing about yourself, what would it be?"
+  },
+  {
+    "id": 113,
+    "category": "real talk",
+    "question": "Are you living the life you dreamed of?"
+  },
+  {
+    "id": 114,
+    "category": "real talk",
+    "question": "What were your childhood hobbies? Are they still part of who you are?"
+  },
+  {
+    "id": 115,
+    "category": "real talk",
+    "question": "Ask each person in the group, what are my greatest strengths?"
+  },
+  {
+    "id": 116,
+    "category": "real talk",
+    "question": "Without mentioning any tech, name your most prized possession."
+  },
+  {
+    "id": 117,
+    "category": "real talk",
+    "question": "What is the one thing you want to accomplish before the year ends?"
+  },
+  {
+    "id": 118,
+    "category": "real talk",
+    "question": "Was your childhood idyllic? Would you change anything about it today?"
+  },
+  {
+    "id": 119,
+    "category": "real talk",
+    "question": "Ask each person in the group. How can I improve my relationship with you?"
+  },
+  {
+    "id": 120,
+    "category": "real talk",
+    "question": "Ask each person in the group. When were you most proud of me?"
+  },
+  {
+    "id": 121,
+    "category": "real talk",
+    "question": "When was the last time you forgave yourself?"
+  },
+  {
+    "id": 122,
+    "category": "real talk",
+    "question": "What’s your experience with race?"
+  },
+  {
+    "id": 123,
+    "category": "real talk",
+    "question": "We know you have a favourite friend. Who is it? "
+  },
+  {
+    "id": 124,
+    "category": "real talk",
+    "question": "What is the ideal age to die?"
+  },
+  {
+    "id": 125,
+    "category": "real talk",
+    "question": "How much do you make a year?"
+  },
+  {
+    "id": 126,
+    "category": "real talk",
+    "question": "Who did you vote for in the last election?"
+  },
+  {
+    "id": 127,
+    "category": "real talk",
+    "question": "Ask someone in the group. Which actor should play you in a movie about your life?"
+  },
+  {
+    "id": 128,
+    "category": "real talk",
+    "question": "Tell us the story of your first time getting wasted."
+  },
+  {
+    "id": 129,
+    "category": "real talk",
+    "question": "What was your spiritual background as a child, and how does it impact your life today?"
+  },
+  {
+    "id": 130,
+    "category": "real talk",
+    "question": "How many times have you been in love?"
+  },
+  {
+    "id": 131,
+    "category": "real talk",
+    "question": "Life is fragile, and so is money. Would you want ten more years or one million?"
+  },
+  {
+    "id": 132,
+    "category": "real talk",
+    "question": "Define love."
+  },
+  {
+    "id": 133,
+    "category": "real talk",
+    "question": "What is something you’re too scared to go after?"
+  },
+  {
+    "id": 134,
+    "category": "real talk",
+    "question": "What’s your favourite city in the world and why?"
+  },
+  {
+    "id": 135,
+    "category": "real talk",
+    "question": "If money wasn’t an issue, how would you spend your time?"
+  },
+  {
+    "id": 136,
+    "category": "real talk",
+    "question": "Parenting is hard. What should your parents have taught you when you were younger?"
+  },
+  {
+    "id": 137,
+    "category": "real talk",
+    "question": "How can we repair race relations in North America?"
+  },
+  {
+    "id": 138,
+    "category": "real talk",
+    "question": "You can only stream one album for the rest of your life. What is it?"
+  },
+  {
+    "id": 139,
+    "category": "real talk",
+    "question": "Tell us about the best birthday you've ever had."
+  },
+  {
+    "id": 140,
+    "category": "real talk",
+    "question": "What's something about you that nobody else would believe?"
+  }
+]
