@@ -1,22 +1,22 @@
-import React, { useState, useEffect, useRef } from "react";
-import {
-  View,
-  Text,
-  Animated,
-  SafeAreaView,
-  useWindowDimensions,
-  PanResponder,
-  Modal,
-  TouchableOpacity,
-  Platform,
-} from "react-native";
+import * as FileSystem from "expo-file-system";
+import { LinearGradient } from "expo-linear-gradient";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  Animated,
+  Modal,
+  PanResponder,
+  Platform,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  useWindowDimensions,
+  View,
+} from "react-native";
+import Header from "../components/Header";
+import { ENTRY_IDS, FINAL_CARD, FORM_URL } from "../constants/Feedback";
 import questions from "../questions.json";
 import styles from "./gameStyles";
-import { LinearGradient } from "expo-linear-gradient";
-import * as FileSystem from "expo-file-system";
-import { ENTRY_IDS, FORM_URL, FINAL_CARD } from "../constants/Feedback";
-import Header from "../components/Header";
 
 interface Question {
   id: number;
@@ -43,6 +43,7 @@ export default function GameScreen() {
     }).start();
   };
 
+  // State variables
   const [currentCard, setCurrentCard] = useState<Question | null>(null);
   const [remainingCards, setRemainingCards] = useState<Question[]>([]);
   const [gameEnded, setGameEnded] = useState(false);
