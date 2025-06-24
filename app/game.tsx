@@ -302,7 +302,7 @@ export default function GameScreen() {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Game Over!</Text>
             <Text style={styles.modalText}>
-              You've gone through all the questions.
+              You&apos;ve gone through all the questions.
             </Text>
             <TouchableOpacity
               style={styles.modalButton}
