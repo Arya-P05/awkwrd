@@ -698,5 +698,25 @@
     "id": 140,
     "category": "real talk",
     "question": "What's something about you that nobody else would believe?"
+  },
+  {
+    "id": 141,
+    "category": "couple",
+    "question": "When did you first know that I loved you?"
+  },
+  {
+    "id": 142,
+    "category": "couple",
+    "question": "What's one thing you've never told me?"
+  },
+  {
+    "id": 143,
+    "category": "couple",
+    "question": "What's your favourite weird little habit of mine?"
+  },
+  {
+    "id": 144,
+    "category": "couple",
+    "question": "What was the very first thing you noticed about me?"
   }
 ]
