@@ -742,11 +742,36 @@
   {
     "id": 149,
     "category": "real talk",
+    "question": "If you could teleport us anywhere right now, where would we go?"
+  },
+  {
+    "id": 150,
+    "category": "real talk",
+    "question": "If we were stuck in an elevator for 24 hours, how would we pass the time?"
+  },
+  {
+    "id": 151,
+    "category": "real talk",
+    "question": "If I suddenly became famous, what do you think it would be for?"
+  },
+  {
+    "id": 152,
+    "category": "real talk",
+    "question": "If we can get a pet together as a group, what kind of pet should we adopt?"
+  },
+  {
+    "id": 153,
+    "category": "couple",
+    "question": "What's your favourite place to be kissed?"
+  },
+  {
+    "id": 154,
+    "category": "real talk",
     "question": "If you caught me yelling at a stranger, what do you think I'd be pissed about?"
   },
   {
-    "id": 148,
+    "id": 155,
     "category": "couple",
-    "question": "What is your favourite place to be kissed?"
+    "question": "What’s a moment from our first date that still makes you smile?"
   }
 ]
