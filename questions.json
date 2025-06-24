@@ -718,5 +718,25 @@
     "id": 144,
     "category": "couple",
     "question": "What was the very first thing you noticed about me?"
+  },
+  {
+    "id": 145,
+    "category": "couple",
+    "question": "What's a fear you only feel comfortable sharing with me?"
+  },
+  {
+    "id": 146,
+    "category": "couple",
+    "question": "If I could change one thing to make you feel even more loved, what would it be?"
+  },
+  {
+    "id": 147,
+    "category": "couple",
+    "question": "What's a secret wish about our future that you think about often?"
+  },
+  {
+    "id": 148,
+    "category": "couple",
+    "question": "What's one thing you want us to never lose in our relationship?"
   }
 ]
