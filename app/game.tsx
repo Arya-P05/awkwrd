@@ -14,8 +14,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import questions from "../questions.json";
 import styles from "./gameStyles";
 import { LinearGradient } from "expo-linear-gradient";
-import * as FileSystem from "expo-file-system";
-import { ENTRY_IDS, FORM_URL, FINAL_CARD } from "../constants/Feedback";
+import { FINAL_CARD } from "../constants/Feedback";
 import Header from "../components/Header";
 
 interface Question {
@@ -52,70 +51,6 @@ export default function GameScreen() {
 
   const pan = useRef(new Animated.ValueXY()).current;
   const cardOpacity = useRef(new Animated.Value(1)).current;
-
-  const saveData = async (
-    accepted: number[] = acceptedCardIds,
-    rejected: number[] = rejectedCardIds
-  ) => {
-    try {
-      const timestamp = new Date().toISOString();
-      const sessionId = Math.random().toString(36).substring(2, 15);
-
-      if (Platform.OS !== "web") {
-        const dirPath = `${FileSystem.documentDirectory}game_data/`;
-        const dirInfo = await FileSystem.getInfoAsync(dirPath);
-        if (!dirInfo.exists) {
-          await FileSystem.makeDirectoryAsync(dirPath, { intermediates: true });
-        }
-
-        const acceptedPath = `${dirPath}accepted_cards_${timestamp}.json`;
-        await FileSystem.writeAsStringAsync(
-          acceptedPath,
-          JSON.stringify(accepted)
-        );
-
-        const rejectedPath = `${dirPath}rejected_cards_${timestamp}.json`;
-        await FileSystem.writeAsStringAsync(
-          rejectedPath,
-          JSON.stringify(rejected)
-        );
-
-        console.log("Data saved locally");
-      } else {
-        console.log("Skipping file operations on web");
-      }
-
-      const formData = new URLSearchParams({
-        [ENTRY_IDS.sessionId]: sessionId,
-        [ENTRY_IDS.acceptedCards]: JSON.stringify(accepted),
-        [ENTRY_IDS.rejectedCards]: JSON.stringify(rejected),
-        [ENTRY_IDS.categories]: JSON.stringify(selectedCategories),
-        [ENTRY_IDS.deviceInfo]: JSON.stringify({
-          platform: Platform.OS,
-          width,
-          height,
-          timestamp,
-        }),
-      }).toString();
-
-      await fetch(`${FORM_URL}?${formData}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      });
-
-      console.log("Data submitted to Google Form");
-    } catch (e) {
-      console.error("Failed to save or submit data", e);
-    }
-  };
-
-  useEffect(() => {
-    return () => {
-      if (acceptedCardIds.length > 0 || rejectedCardIds.length > 0) {
-        saveData();
-      }
-    };
-  }, [acceptedCardIds, rejectedCardIds]);
 
   useEffect(() => {
     if (!selectedCategories.length) return;
@@ -172,7 +107,6 @@ export default function GameScreen() {
         SAVE_THRESHOLDS.includes(totalSwipes) &&
         !saveMilestones.includes(totalSwipes)
       ) {
-        saveData(newAccepted, newRejected);
         setSaveMilestones((prev) => [...prev, totalSwipes]);
       }
 
@@ -183,7 +117,6 @@ export default function GameScreen() {
         setCurrentCard(newDeck.length > 0 ? newDeck[0] : null);
 
         if (newDeck.length === 0 || newDeck[0]?.id === -1) {
-          saveData(newAccepted, newRejected);
           setTimeout(() => router.replace("/"), 2000);
         }
 
@@ -246,11 +179,6 @@ export default function GameScreen() {
 
       <Header
         onBack={async () => {
-          console.log("Back button pressed");
-          if (acceptedCardIds.length > 0 || rejectedCardIds.length > 0) {
-            await saveData();
-            console.log("Data saved before going back");
-          }
           router.back();
         }}
       />
@@ -306,7 +234,6 @@ export default function GameScreen() {
             <TouchableOpacity
               style={styles.modalButton}
               onPress={() => {
-                saveData();
                 router.replace("/");
               }}
             >

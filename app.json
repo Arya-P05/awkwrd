@@ -23,7 +23,8 @@
       },
       "runtimeVersion": {
         "policy": "appVersion"
-      }
+      },
+      "package": "com.aryap.x05.awkwrdcardgame"
     },
     "web": {
       "bundler": "metro",
