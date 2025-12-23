@@ -24,11 +24,6 @@
       "runtimeVersion": "1.0.0",
       "package": "com.aryap.x05.awkwrdcardgame"
     },
-    "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
-    },
     "plugins": [
       "expo-router",
       [
