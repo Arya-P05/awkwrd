@@ -7,29 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0BB96FEE701C68B22D873E31 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 9AEDDA1ED91EA310DAFAABF5 /* PrivacyInfo.xcprivacy */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		7F4A1EA8BDC0F3A33BFBA2A0 /* libPods-Awkwrd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8315C2F10E3E7C8CD48833DD /* libPods-Awkwrd.a */; };
+		A6A59ADD193F22AF4C80BB3F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = AA5A7117E98A65F81FA94094 /* PrivacyInfo.xcprivacy */; };
+		B1414A355776C861FA1406A3 /* libPods-Awkwrd.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E026FB355EB055E3E104C518 /* libPods-Awkwrd.a */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		DA26003EB3473704C09B4D72 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C07C5C276E555FEEA3B76CC /* ExpoModulesProvider.swift */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
+		FBBB2DAA621B4F2CF66867A2 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F84CA7D9027E2010AF01CD /* ExpoModulesProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1243D2AF636C10F78BBB5024 /* Pods-Awkwrd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Awkwrd.release.xcconfig"; path = "Target Support Files/Pods-Awkwrd/Pods-Awkwrd.release.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* Awkwrd.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Awkwrd.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Awkwrd/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Awkwrd/Info.plist; sourceTree = "<group>"; };
-		2C07C5C276E555FEEA3B76CC /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Awkwrd/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		8315C2F10E3E7C8CD48833DD /* libPods-Awkwrd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Awkwrd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9AEDDA1ED91EA310DAFAABF5 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Awkwrd/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		50F84CA7D9027E2010AF01CD /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-Awkwrd/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = Awkwrd/SplashScreen.storyboard; sourceTree = "<group>"; };
-		AAD90377525F6345B71A8B6B /* Pods-Awkwrd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Awkwrd.debug.xcconfig"; path = "Target Support Files/Pods-Awkwrd/Pods-Awkwrd.debug.xcconfig"; sourceTree = "<group>"; };
+		AA5A7117E98A65F81FA94094 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Awkwrd/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
+		BFB561711BE6004980B768DD /* Pods-Awkwrd.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Awkwrd.release.xcconfig"; path = "Target Support Files/Pods-Awkwrd/Pods-Awkwrd.release.xcconfig"; sourceTree = "<group>"; };
+		E026FB355EB055E3E104C518 /* libPods-Awkwrd.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Awkwrd.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Awkwrd/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* Awkwrd-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Awkwrd-Bridging-Header.h"; path = "Awkwrd/Awkwrd-Bridging-Header.h"; sourceTree = "<group>"; };
+		F14FD2A137DF29295A5A0CE7 /* Pods-Awkwrd.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Awkwrd.debug.xcconfig"; path = "Target Support Files/Pods-Awkwrd/Pods-Awkwrd.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F4A1EA8BDC0F3A33BFBA2A0 /* libPods-Awkwrd.a in Frameworks */,
+				B1414A355776C861FA1406A3 /* libPods-Awkwrd.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,7 +53,7 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				9AEDDA1ED91EA310DAFAABF5 /* PrivacyInfo.xcprivacy */,
+				AA5A7117E98A65F81FA94094 /* PrivacyInfo.xcprivacy */,
 			);
 			name = Awkwrd;
 			sourceTree = "<group>";
@@ -62,24 +62,24 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				8315C2F10E3E7C8CD48833DD /* libPods-Awkwrd.a */,
+				E026FB355EB055E3E104C518 /* libPods-Awkwrd.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4F31770329F03D2A51B440F8 /* Awkwrd */ = {
+		321DF74B833E264D8B3D1413 /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				2C07C5C276E555FEEA3B76CC /* ExpoModulesProvider.swift */,
+				D414CCC6E2916873D3C22C08 /* Awkwrd */,
 			);
-			name = Awkwrd;
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
-		5E492063EC6B755352BB0716 /* Pods */ = {
+		5853CA228492B0B69777D2DE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AAD90377525F6345B71A8B6B /* Pods-Awkwrd.debug.xcconfig */,
-				1243D2AF636C10F78BBB5024 /* Pods-Awkwrd.release.xcconfig */,
+				F14FD2A137DF29295A5A0CE7 /* Pods-Awkwrd.debug.xcconfig */,
+				BFB561711BE6004980B768DD /* Pods-Awkwrd.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -99,8 +99,8 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				5E492063EC6B755352BB0716 /* Pods */,
-				F4A6EDE5DF1F1D5BB099671E /* ExpoModulesProviders */,
+				5853CA228492B0B69777D2DE /* Pods */,
+				321DF74B833E264D8B3D1413 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -124,12 +124,12 @@
 			path = Awkwrd/Supporting;
 			sourceTree = "<group>";
 		};
-		F4A6EDE5DF1F1D5BB099671E /* ExpoModulesProviders */ = {
+		D414CCC6E2916873D3C22C08 /* Awkwrd */ = {
 			isa = PBXGroup;
 			children = (
-				4F31770329F03D2A51B440F8 /* Awkwrd */,
+				50F84CA7D9027E2010AF01CD /* ExpoModulesProvider.swift */,
 			);
-			name = ExpoModulesProviders;
+			name = Awkwrd;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,13 +140,13 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "Awkwrd" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				0F0CF10020D2ECEE2B41DB10 /* [Expo] Configure project */,
+				6D3C6B7D36F383DFAE69BD26 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				6700BD35C58A0435ECEFA481 /* [CP] Embed Pods Frameworks */,
+				786DC4A19CA0B764170A026A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -196,7 +196,7 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				0BB96FEE701C68B22D873E31 /* PrivacyInfo.xcprivacy in Resources */,
+				A6A59ADD193F22AF4C80BB3F /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,7 +242,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		0F0CF10020D2ECEE2B41DB10 /* [Expo] Configure project */ = {
+		6D3C6B7D36F383DFAE69BD26 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -266,7 +266,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-Awkwrd/expo-configure-project.sh\"\n";
 		};
-		6700BD35C58A0435ECEFA481 /* [CP] Embed Pods Frameworks */ = {
+		786DC4A19CA0B764170A026A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -374,7 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				DA26003EB3473704C09B4D72 /* ExpoModulesProvider.swift in Sources */,
+				FBBB2DAA621B4F2CF66867A2 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -383,7 +383,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AAD90377525F6345B71A8B6B /* Pods-Awkwrd.debug.xcconfig */;
+			baseConfigurationReference = F14FD2A137DF29295A5A0CE7 /* Pods-Awkwrd.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -419,7 +419,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1243D2AF636C10F78BBB5024 /* Pods-Awkwrd.release.xcconfig */;
+			baseConfigurationReference = BFB561711BE6004980B768DD /* Pods-Awkwrd.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
