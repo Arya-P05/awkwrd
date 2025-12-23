@@ -19,6 +19,12 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "arya.patel2354@gmail.com",
+        "ascAppId": "6756679987",
+        "appleTeamId": "547SCMFGR9"
+      }
+    }
   }
 }
