@@ -20,7 +20,13 @@ const screenWidth = Dimensions.get("window").width;
 const boxSize = screenWidth > 768 ? screenWidth * 0.22 : screenWidth * 0.4;
 const maxBoxSize = 160;
 
-type CategoryId = "chill" | "real talk" | "relationships" | "sex" | "dating";
+type CategoryId =
+  | "chill"
+  | "real talk"
+  | "relationships"
+  | "sex"
+  | "dating"
+  | "t/d";
 
 const CATEGORIES: {
   id: CategoryId;
@@ -57,6 +63,12 @@ const CATEGORIES: {
     name: "Dating",
     icon: "people-outline",
     colour: "rgba(244, 114, 182, 0.9)",
+  },
+  {
+    id: "t/d",
+    name: "True or Dare",
+    icon: "dice-outline",
+    colour: "rgba(154, 0, 151, 0.9)",
   },
 ];
 
@@ -110,7 +122,9 @@ export default function CategorySelectionScreen() {
               ]}
               onPress={() => toggleCategory(category.id)}
             >
-              <Ionicons name={category.icon} size={30} color="white" />
+              <View style={{ marginBottom: 5 }}>
+                <Ionicons name={category.icon} size={30} color="white" />
+              </View>
               <Text style={styles.categoryText}>{category.name}</Text>
             </TouchableOpacity>
           ))}

@@ -1,6 +1,12 @@
 import React, { createContext, useContext, useState } from "react";
 
-type CategoryId = "chill" | "real talk" | "relationships" | "sex" | "dating";
+type CategoryId =
+  | "chill"
+  | "real talk"
+  | "relationships"
+  | "sex"
+  | "dating"
+  | "t/d";
 
 interface CategoryContextProps {
   selectedCategories: Record<CategoryId, boolean>;
@@ -22,6 +28,7 @@ export const CategoryProvider: React.FC<{ children: React.ReactNode }> = ({
     relationships: false,
     sex: false,
     dating: false,
+    "t/d": false,
   });
 
   const toggleCategory = (categoryId: CategoryId) => {
