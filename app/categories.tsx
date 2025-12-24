@@ -20,7 +20,7 @@ const screenWidth = Dimensions.get("window").width;
 const boxSize = screenWidth > 768 ? screenWidth * 0.22 : screenWidth * 0.4;
 const maxBoxSize = 160;
 
-type CategoryId = "real talk" | "relationships" | "sex" | "dating";
+type CategoryId = "real talk" | "relationships" | "sex" | "dating" | "vibes";
 
 const CATEGORIES: {
   id: CategoryId;
@@ -51,6 +51,12 @@ const CATEGORIES: {
     name: "Dating",
     icon: "people-outline",
     colour: "rgba(244, 114, 182, 0.9)",
+  },
+  {
+    id: "vibes",
+    name: "Vibes",
+    icon: "sparkles-outline",
+    colour: "rgba(251, 191, 36, 0.9)",
   },
 ];
 
