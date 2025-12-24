@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 
-type CategoryId = "vibes" | "real talk" | "relationships" | "sex" | "dating";
+type CategoryId = "chill" | "real talk" | "relationships" | "sex" | "dating";
 
 interface CategoryContextProps {
   selectedCategories: Record<CategoryId, boolean>;
@@ -17,7 +17,7 @@ export const CategoryProvider: React.FC<{ children: React.ReactNode }> = ({
   const [selectedCategories, setSelectedCategories] = useState<
     Record<CategoryId, boolean>
   >({
-    vibes: false,
+    chill: false,
     "real talk": false,
     relationships: false,
     sex: false,
