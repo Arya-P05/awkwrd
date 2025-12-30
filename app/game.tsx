@@ -11,6 +11,7 @@ import {
   Platform,
 } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import { useKeepAwake } from "expo-keep-awake";
 import questions from "../questions.json";
 import styles from "./gameStyles";
 import { LinearGradient } from "expo-linear-gradient";
@@ -26,6 +27,9 @@ interface Question {
 const SAVE_THRESHOLDS = [10, 25, 50];
 
 export default function GameScreen() {
+  // Keep the screen awake while playing the game
+  useKeepAwake();
+
   const params = useLocalSearchParams<{ categories?: string }>();
   const router = useRouter();
   const { width, height } = useWindowDimensions();
