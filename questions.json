@@ -1343,5 +1343,505 @@
     "id": 270,
     "category": "chill",
     "question": "If you could swap lives with anyone for a day, who would it be?"
+  },
+  {
+    "id": 271,
+    "category": "t/d",
+    "question": "TRUTH: What's the most embarrassing thing you've ever done to get someone's attention?"
+  },
+  {
+    "id": 272,
+    "category": "t/d",
+    "question": "DARE: Let the group go through your camera roll for 30 seconds."
+  },
+  {
+    "id": 273,
+    "category": "t/d",
+    "question": "TRUTH: Who in this room would you most likely hook up with?"
+  },
+  {
+    "id": 274,
+    "category": "t/d",
+    "question": "DARE: Send a flirty text to the last person you messaged."
+  },
+  {
+    "id": 275,
+    "category": "t/d",
+    "question": "TRUTH: What's the biggest lie you've told a partner?"
+  },
+  {
+    "id": 276,
+    "category": "t/d",
+    "question": "DARE: Do your best impression of someone in this room."
+  },
+  {
+    "id": 277,
+    "category": "t/d",
+    "question": "TRUTH: Have you ever stalked an ex? How deep did you go?"
+  },
+  {
+    "id": 278,
+    "category": "t/d",
+    "question": "DARE: Call your most recent ex and hang up when they answer."
+  },
+  {
+    "id": 279,
+    "category": "t/d",
+    "question": "TRUTH: What's the pettiest reason you've ended a relationship?"
+  },
+  {
+    "id": 280,
+    "category": "t/d",
+    "question": "DARE: Post an embarrassing photo of yourself on your story for 5 minutes."
+  },
+  {
+    "id": 281,
+    "category": "t/d",
+    "question": "TRUTH: Who was the last person you had a dream about?"
+  },
+  {
+    "id": 282,
+    "category": "t/d",
+    "question": "DARE: Text someone 'I need to tell you something' and don't reply for 10 minutes."
+  },
+  {
+    "id": 283,
+    "category": "t/d",
+    "question": "TRUTH: What's something you've never told anyone in this room?"
+  },
+  {
+    "id": 284,
+    "category": "t/d",
+    "question": "DARE: Let someone in the group post anything on your social media."
+  },
+  {
+    "id": 285,
+    "category": "t/d",
+    "question": "TRUTH: What's the most scandalous thing on your phone right now?"
+  },
+  {
+    "id": 286,
+    "category": "t/d",
+    "question": "DARE: Do a TikTok dance chosen by the group."
+  },
+  {
+    "id": 287,
+    "category": "t/d",
+    "question": "TRUTH: Have you ever lied about your body count? What's the real number?"
+  },
+  {
+    "id": 288,
+    "category": "t/d",
+    "question": "DARE: Let someone in the room send a DM to anyone from your Instagram."
+  },
+  {
+    "id": 289,
+    "category": "t/d",
+    "question": "TRUTH: What's the worst date you've ever been on?"
+  },
+  {
+    "id": 290,
+    "category": "t/d",
+    "question": "DARE: Call a random contact and sing happy birthday to them."
+  },
+  {
+    "id": 291,
+    "category": "t/d",
+    "question": "TRUTH: Who was your secret crush that no one knew about?"
+  },
+  {
+    "id": 292,
+    "category": "t/d",
+    "question": "DARE: Let the group read your last 10 text messages."
+  },
+  {
+    "id": 293,
+    "category": "t/d",
+    "question": "TRUTH: What's the most reckless thing you've ever done for love?"
+  },
+  {
+    "id": 294,
+    "category": "t/d",
+    "question": "DARE: Speak in an accent chosen by the group for the next 3 rounds."
+  },
+  {
+    "id": 295,
+    "category": "t/d",
+    "question": "TRUTH: Have you ever cheated or helped someone cheat on their partner?"
+  },
+  {
+    "id": 296,
+    "category": "t/d",
+    "question": "DARE: Screenshot your screen time and share it with the group."
+  },
+  {
+    "id": 297,
+    "category": "t/d",
+    "question": "TRUTH: What's something you pretend to like but actually hate?"
+  },
+  {
+    "id": 298,
+    "category": "t/d",
+    "question": "DARE: Let someone go through your search history."
+  },
+  {
+    "id": 299,
+    "category": "t/d",
+    "question": "TRUTH: Who in this room would you trust with a secret?"
+  },
+  {
+    "id": 300,
+    "category": "t/d",
+    "question": "DARE: Do 10 pushups or take a shot."
+  },
+  {
+    "id": 301,
+    "category": "t/d",
+    "question": "TRUTH: What's the most embarrassing thing you've done while drunk?"
+  },
+  {
+    "id": 302,
+    "category": "t/d",
+    "question": "DARE: Text your parents 'We need to talk' and wait for their response."
+  },
+  {
+    "id": 303,
+    "category": "t/d",
+    "question": "TRUTH: Have you ever faked being sick to avoid someone?"
+  },
+  {
+    "id": 304,
+    "category": "t/d",
+    "question": "DARE: Do your best sexy walk across the room."
+  },
+  {
+    "id": 305,
+    "category": "t/d",
+    "question": "TRUTH: What's the most childish thing you still do?"
+  },
+  {
+    "id": 306,
+    "category": "t/d",
+    "question": "DARE: Let the group take an unflattering photo of you for their camera rolls."
+  },
+  {
+    "id": 307,
+    "category": "t/d",
+    "question": "TRUTH: What's the worst thing you've ever said about someone behind their back?"
+  },
+  {
+    "id": 308,
+    "category": "t/d",
+    "question": "DARE: Call a family member and tell them you're getting married."
+  },
+  {
+    "id": 309,
+    "category": "t/d",
+    "question": "TRUTH: Have you ever had feelings for a friend's partner?"
+  },
+  {
+    "id": 310,
+    "category": "t/d",
+    "question": "DARE: Eat a mystery combination of foods chosen by the group."
+  },
+  {
+    "id": 311,
+    "category": "t/d",
+    "question": "TRUTH: What's your most toxic trait?"
+  },
+  {
+    "id": 312,
+    "category": "t/d",
+    "question": "DARE: Let someone type and send a message to anyone on your phone."
+  },
+  {
+    "id": 313,
+    "category": "t/d",
+    "question": "TRUTH: What's the most illegal thing you've ever done?"
+  },
+  {
+    "id": 314,
+    "category": "t/d",
+    "question": "DARE: Show everyone your most used emoji and explain why."
+  },
+  {
+    "id": 315,
+    "category": "t/d",
+    "question": "TRUTH: Who do you think is the worst driver in this room?"
+  },
+  {
+    "id": 316,
+    "category": "t/d",
+    "question": "DARE: Keep your elbows touching your sides for the next 3 rounds."
+  },
+  {
+    "id": 317,
+    "category": "t/d",
+    "question": "TRUTH: What's the craziest thing you've done to impress someone?"
+  },
+  {
+    "id": 318,
+    "category": "t/d",
+    "question": "DARE: Give a 60-second roast of yourself."
+  },
+  {
+    "id": 319,
+    "category": "t/d",
+    "question": "TRUTH: Have you ever ghosted someone? Why?"
+  },
+  {
+    "id": 320,
+    "category": "t/d",
+    "question": "DARE: Show the last photo you took to everyone."
+  },
+  {
+    "id": 321,
+    "category": "t/d",
+    "question": "TRUTH: What's a secret talent you have that would surprise people?"
+  },
+  {
+    "id": 322,
+    "category": "t/d",
+    "question": "DARE: Let the person to your left give you a makeover."
+  },
+  {
+    "id": 323,
+    "category": "t/d",
+    "question": "TRUTH: Who was the last person you lied to and what was the lie?"
+  },
+  {
+    "id": 324,
+    "category": "t/d",
+    "question": "DARE: Do your best pick-up line on the person across from you."
+  },
+  {
+    "id": 325,
+    "category": "t/d",
+    "question": "TRUTH: What's your most embarrassing music guilty pleasure?"
+  },
+  {
+    "id": 326,
+    "category": "t/d",
+    "question": "DARE: Call a friend and ask them to rate you out of 10 on speakerphone."
+  },
+  {
+    "id": 327,
+    "category": "t/d",
+    "question": "TRUTH: Have you ever sent a risky text to the wrong person?"
+  },
+  {
+    "id": 328,
+    "category": "t/d",
+    "question": "DARE: Talk without using the letter 'A' for the next 2 rounds."
+  },
+  {
+    "id": 329,
+    "category": "t/d",
+    "question": "TRUTH: What's the most embarrassing thing in your room right now?"
+  },
+  {
+    "id": 330,
+    "category": "t/d",
+    "question": "DARE: Let someone in the group change your phone wallpaper for a week."
+  },
+  {
+    "id": 331,
+    "category": "t/d",
+    "question": "TRUTH: What did you think of everyone in this room when you first met them?"
+  },
+  {
+    "id": 332,
+    "category": "t/d",
+    "question": "DARE: Do a dramatic reading of the last thing you copied on your phone."
+  },
+  {
+    "id": 333,
+    "category": "t/d",
+    "question": "TRUTH: What's the longest you've gone without showering?"
+  },
+  {
+    "id": 334,
+    "category": "t/d",
+    "question": "DARE: Let the group pick your profile picture for a day."
+  },
+  {
+    "id": 335,
+    "category": "t/d",
+    "question": "TRUTH: Have you ever pretended to be someone you're not?"
+  },
+  {
+    "id": 336,
+    "category": "t/d",
+    "question": "DARE: Describe everyone in this room using only food comparisons."
+  },
+  {
+    "id": 337,
+    "category": "t/d",
+    "question": "TRUTH: What's the most awkward thing that's happened to you on a date?"
+  },
+  {
+    "id": 338,
+    "category": "t/d",
+    "question": "DARE: Let the group scroll through your notes app."
+  },
+  {
+    "id": 339,
+    "category": "t/d",
+    "question": "TRUTH: Who in this room would you want to be stuck on a deserted island with?"
+  },
+  {
+    "id": 340,
+    "category": "t/d",
+    "question": "DARE: Freestyle rap about everyone in the room."
+  },
+  {
+    "id": 341,
+    "category": "t/d",
+    "question": "TRUTH: What's your biggest turn off that you've never told anyone?"
+  },
+  {
+    "id": 342,
+    "category": "t/d",
+    "question": "DARE: Let the person to your right take a photo of you in any pose they choose."
+  },
+  {
+    "id": 343,
+    "category": "t/d",
+    "question": "TRUTH: What's the meanest thing you've ever done to a sibling or friend?"
+  },
+  {
+    "id": 344,
+    "category": "t/d",
+    "question": "DARE: Show your Spotify wrapped or most played songs."
+  },
+  {
+    "id": 345,
+    "category": "t/d",
+    "question": "TRUTH: Have you ever been caught doing something you shouldn't?"
+  },
+  {
+    "id": 346,
+    "category": "t/d",
+    "question": "DARE: Give a compliment to everyone in the room."
+  },
+  {
+    "id": 347,
+    "category": "t/d",
+    "question": "TRUTH: What's something you'd do if no one would ever find out?"
+  },
+  {
+    "id": 348,
+    "category": "t/d",
+    "question": "DARE: Let the group look through your saved posts."
+  },
+  {
+    "id": 349,
+    "category": "t/d",
+    "question": "TRUTH: Who do you secretly judge the most in this room?"
+  },
+  {
+    "id": 350,
+    "category": "t/d",
+    "question": "DARE: Send 'I miss you' to the 5th person in your contacts."
+  },
+  {
+    "id": 351,
+    "category": "t/d",
+    "question": "TRUTH: What's the worst gift you've ever received but pretended to love?"
+  },
+  {
+    "id": 352,
+    "category": "t/d",
+    "question": "DARE: Let someone post on your story with no restrictions."
+  },
+  {
+    "id": 353,
+    "category": "t/d",
+    "question": "TRUTH: Have you ever had a friend with benefits? How did it end?"
+  },
+  {
+    "id": 354,
+    "category": "t/d",
+    "question": "DARE: Give a dramatic reenactment of your last breakup."
+  },
+  {
+    "id": 355,
+    "category": "t/d",
+    "question": "TRUTH: What's your most controversial hot take?"
+  },
+  {
+    "id": 356,
+    "category": "t/d",
+    "question": "DARE: Try to make someone in the room laugh in under 30 seconds."
+  },
+  {
+    "id": 357,
+    "category": "t/d",
+    "question": "TRUTH: Have you ever talked badly about someone in this room?"
+  },
+  {
+    "id": 358,
+    "category": "t/d",
+    "question": "DARE: Post a throwback photo from at least 5 years ago on your story."
+  },
+  {
+    "id": 359,
+    "category": "t/d",
+    "question": "TRUTH: What's the most regrettable text you've ever sent?"
+  },
+  {
+    "id": 360,
+    "category": "t/d",
+    "question": "DARE: Let the group choose a ringtone for you for a week."
+  },
+  {
+    "id": 361,
+    "category": "t/d",
+    "question": "TRUTH: Who was your first kiss? Was it awkward?"
+  },
+  {
+    "id": 362,
+    "category": "t/d",
+    "question": "DARE: Send 'you up?' to your most recent ex."
+  },
+  {
+    "id": 363,
+    "category": "t/d",
+    "question": "TRUTH: What's something you've never told your best friend?"
+  },
+  {
+    "id": 364,
+    "category": "t/d",
+    "question": "DARE: Let someone read your last email out loud."
+  },
+  {
+    "id": 365,
+    "category": "t/d",
+    "question": "TRUTH: What's the biggest misconception people have about you?"
+  },
+  {
+    "id": 366,
+    "category": "t/d",
+    "question": "DARE: Serenade someone in the room with a song of their choice."
+  },
+  {
+    "id": 367,
+    "category": "t/d",
+    "question": "TRUTH: Have you ever used someone for something other than love?"
+  },
+  {
+    "id": 368,
+    "category": "t/d",
+    "question": "DARE: Text your crush or partner 'we need to talk' and wait for a response."
+  },
+  {
+    "id": 369,
+    "category": "t/d",
+    "question": "TRUTH: What's something you've done that you hope your parents never find out about?"
+  },
+  {
+    "id": 370,
+    "category": "t/d",
+    "question": "DARE: Let the group change your bio on any social media platform."
   }
 ]
