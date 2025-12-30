@@ -66,7 +66,7 @@ const CATEGORIES: {
   },
   {
     id: "t/d",
-    name: "True or Dare",
+    name: "Truth or Dare",
     icon: "dice-outline",
     colour: "rgba(154, 0, 151, 0.9)",
   },
