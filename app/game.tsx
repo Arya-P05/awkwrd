@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   View,
   Text,
@@ -8,23 +8,29 @@ import {
   PanResponder,
   Modal,
   TouchableOpacity,
-  Platform,
+  ActivityIndicator,
 } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useKeepAwake } from "expo-keep-awake";
-import questions from "../questions.json";
 import styles from "./gameStyles";
 import { LinearGradient } from "expo-linear-gradient";
 import { FINAL_CARD } from "../constants/Feedback";
 import Header from "../components/Header";
 
-interface Question {
-  id: number;
-  category: string;
-  question: string;
-}
+// Import smart deck services
+import {
+  buildSmartDeck,
+  recordSwipe,
+  generateQuestionsForCategories,
+  CategoryId,
+  Question,
+  DeckBuildResult,
+} from "./services";
 
-const SAVE_THRESHOLDS = [10, 25, 50];
+// Configuration
+const AI_GENERATION_THRESHOLD = 0.8; // Generate new questions when 80% seen
+const CARDS_LOW_THRESHOLD = 10; // Start generating when this many cards left
+const QUESTIONS_PER_CATEGORY = 5; // How many to generate per category
 
 export default function GameScreen() {
   // Keep the screen awake while playing the game
@@ -35,7 +41,7 @@ export default function GameScreen() {
   const { width, height } = useWindowDimensions();
 
   const selectedCategories = params.categories
-    ? params.categories.split(",")
+    ? (params.categories.split(",") as CategoryId[])
     : [];
 
   const resetPan = () => {
@@ -46,30 +52,145 @@ export default function GameScreen() {
     }).start();
   };
 
+  // State
   const [currentCard, setCurrentCard] = useState<Question | null>(null);
   const [remainingCards, setRemainingCards] = useState<Question[]>([]);
   const [gameEnded, setGameEnded] = useState(false);
-  const [acceptedCardIds, setAcceptedCardIds] = useState<number[]>([]);
-  const [rejectedCardIds, setRejectedCardIds] = useState<number[]>([]);
-  const [saveMilestones, setSaveMilestones] = useState<number[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [deckStats, setDeckStats] = useState<DeckBuildResult["stats"] | null>(
+    null
+  );
+
+  // Silent AI generation tracking
+  const [isGenerating, setIsGenerating] = useState(false);
+  const hasTriggeredGeneration = useRef(false);
 
   const pan = useRef(new Animated.ValueXY()).current;
   const cardOpacity = useRef(new Animated.Value(1)).current;
 
+  // Initialize the smart deck
   useEffect(() => {
-    if (!selectedCategories.length) return;
+    async function initializeDeck() {
+      if (!selectedCategories.length) return;
 
-    const filteredQuestions = questions.filter((q) =>
-      selectedCategories.includes(q.category)
-    ) as Question[];
+      setIsLoading(true);
+      try {
+        const result = await buildSmartDeck(selectedCategories);
+        const { deck, stats } = result;
 
-    const shuffled = [...filteredQuestions].sort(() => Math.random() - 0.5);
+        console.log("Smart Deck Built:", {
+          total: stats.totalQuestions,
+          unseen: stats.unseenQuestions,
+          seen: stats.seenQuestions,
+          percentageSeen: stats.percentageSeen,
+        });
 
-    console.log("Initializing Game - Total Questions:", shuffled.length + 1);
+        setDeckStats(stats);
 
-    setRemainingCards([...shuffled, FINAL_CARD]);
-    setCurrentCard(shuffled.length > 0 ? shuffled[0] : FINAL_CARD);
+        // If they've already seen 80%+ on initial load, generate more immediately
+        if (stats.shouldOfferAI && !hasTriggeredGeneration.current) {
+          silentlyGenerateQuestions();
+        }
+
+        if (deck.length > 0) {
+          setRemainingCards([...deck, FINAL_CARD]);
+          setCurrentCard(deck[0]);
+        } else {
+          // No questions available - try generating or show final card
+          if (!hasTriggeredGeneration.current) {
+            await silentlyGenerateQuestions();
+            // Rebuild after generation
+            const newResult = await buildSmartDeck(selectedCategories);
+            if (newResult.deck.length > 0) {
+              setRemainingCards([...newResult.deck, FINAL_CARD]);
+              setCurrentCard(newResult.deck[0]);
+              setDeckStats(newResult.stats);
+            } else {
+              setRemainingCards([FINAL_CARD]);
+              setCurrentCard(FINAL_CARD);
+            }
+          } else {
+            setRemainingCards([FINAL_CARD]);
+            setCurrentCard(FINAL_CARD);
+          }
+        }
+      } catch (error) {
+        console.error("Error building deck:", error);
+        setCurrentCard(FINAL_CARD);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    initializeDeck();
   }, [params.categories]);
+
+  // Silently generate more questions in the background
+  const silentlyGenerateQuestions = useCallback(async () => {
+    if (isGenerating || hasTriggeredGeneration.current) return;
+
+    hasTriggeredGeneration.current = true;
+    setIsGenerating(true);
+
+    try {
+      console.log("Silently generating questions for:", selectedCategories);
+
+      const result = await generateQuestionsForCategories(
+        selectedCategories,
+        QUESTIONS_PER_CATEGORY
+      );
+
+      if (result.success) {
+        console.log("Generated", result.totalGenerated, "new questions");
+
+        // Rebuild the deck with new questions
+        const newResult = await buildSmartDeck(selectedCategories);
+        const { deck, stats } = newResult;
+
+        setDeckStats(stats);
+
+        // Add new cards to current deck seamlessly
+        if (deck.length > 0 && currentCard) {
+          const currentIds = new Set(remainingCards.map((c) => c.id));
+          const newCards = deck.filter(
+            (q) => !currentIds.has(q.id) && q.id !== currentCard.id
+          );
+
+          if (newCards.length > 0) {
+            setRemainingCards((prev) => {
+              // Insert new cards before the final card
+              const withoutFinal = prev.filter((c) => c.id !== -1);
+              return [...withoutFinal, ...newCards, FINAL_CARD];
+            });
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Error generating questions:", error);
+    } finally {
+      setIsGenerating(false);
+    }
+  }, [selectedCategories, currentCard, remainingCards, isGenerating]);
+
+  // Check if we should generate more questions (runs on deck change)
+  useEffect(() => {
+    const realCardsLeft = remainingCards.filter((c) => c.id !== -1).length;
+
+    // Trigger generation when running low AND they've seen enough to have preferences
+    if (
+      realCardsLeft <= CARDS_LOW_THRESHOLD &&
+      deckStats?.shouldOfferAI &&
+      !hasTriggeredGeneration.current &&
+      !isGenerating
+    ) {
+      silentlyGenerateQuestions();
+    }
+  }, [
+    remainingCards.length,
+    deckStats,
+    isGenerating,
+    silentlyGenerateQuestions,
+  ]);
 
   const getCategoryColor = (category: string): string => {
     switch (category.toLowerCase()) {
@@ -81,55 +202,62 @@ export default function GameScreen() {
         return "rgba(239, 68, 68, 0.9)";
       case "dating":
         return "rgba(244, 114, 182, 0.9)";
+      case "chill":
+        return "rgba(251, 191, 36, 0.9)";
+      case "t/d":
+        return "rgba(154, 0, 151, 0.9)";
       default:
         return "#1f2937";
     }
   };
 
-  const handleSwipeComplete = (direction: number) => {
-    Animated.timing(pan, {
-      toValue: { x: direction * width, y: 0 },
-      duration: 200,
-      useNativeDriver: true,
-    }).start(() => {
-      if (!currentCard || remainingCards.length === 0) return;
+  const handleSwipeComplete = useCallback(
+    async (direction: number) => {
+      Animated.timing(pan, {
+        toValue: { x: direction * width, y: 0 },
+        duration: 200,
+        useNativeDriver: true,
+      }).start(async () => {
+        if (!currentCard || remainingCards.length === 0) return;
 
-      let newAccepted = acceptedCardIds;
-      let newRejected = rejectedCardIds;
+        // Record the swipe if it's a real card (not the final card)
+        // This includes AI-generated questions - their feedback improves future generations
+        if (currentCard.id !== -1) {
+          const action = direction === 1 ? "liked" : "skipped";
 
-      if (direction === 1 && currentCard.id !== -1) {
-        newAccepted = [...acceptedCardIds, currentCard.id];
-        setAcceptedCardIds(newAccepted);
-      } else if (currentCard.id !== -1) {
-        newRejected = [...rejectedCardIds, currentCard.id];
-        setRejectedCardIds(newRejected);
-      }
-
-      const totalSwipes = newAccepted.length + newRejected.length;
-
-      if (
-        SAVE_THRESHOLDS.includes(totalSwipes) &&
-        !saveMilestones.includes(totalSwipes)
-      ) {
-        setSaveMilestones((prev) => [...prev, totalSwipes]);
-      }
-
-      setRemainingCards((prev) => {
-        const newDeck =
-          direction === -1 ? [...prev.slice(1), prev[0]] : prev.slice(1);
-
-        setCurrentCard(newDeck.length > 0 ? newDeck[0] : null);
-
-        if (newDeck.length === 0 || newDeck[0]?.id === -1) {
-          setTimeout(() => router.replace("/"), 2000);
+          // Persist the swipe
+          try {
+            await recordSwipe(
+              currentCard.id,
+              currentCard.category as CategoryId,
+              action,
+              currentCard.question.length
+            );
+          } catch (error) {
+            console.error("Error recording swipe:", error);
+          }
         }
 
-        return newDeck;
-      });
+        setRemainingCards((prev) => {
+          // If swiped left (skip), move card to back of deck
+          // If swiped right (like), remove card from deck
+          const newDeck =
+            direction === -1 ? [...prev.slice(1), prev[0]] : prev.slice(1);
 
-      pan.setValue({ x: 0, y: 0 });
-    });
-  };
+          setCurrentCard(newDeck.length > 0 ? newDeck[0] : null);
+
+          if (newDeck.length === 0 || newDeck[0]?.id === -1) {
+            setTimeout(() => router.replace("/"), 2000);
+          }
+
+          return newDeck;
+        });
+
+        pan.setValue({ x: 0, y: 0 });
+      });
+    },
+    [currentCard, remainingCards, width, router, pan]
+  );
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -171,6 +299,28 @@ export default function GameScreen() {
       }).start();
     },
   });
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <SafeAreaView style={styles.container}>
+        <LinearGradient
+          colors={["#0f172a", "#2a3a50"]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 0, y: 1 }}
+          style={styles.background}
+        />
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <ActivityIndicator size="large" color="white" />
+          <Text style={{ color: "white", marginTop: 16, fontSize: 16 }}>
+            Building your deck...
+          </Text>
+        </View>
+      </SafeAreaView>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -228,6 +378,7 @@ export default function GameScreen() {
         <Text style={styles.swipeHintText}>Next →</Text>
       </Animated.View>
 
+      {/* Game Over Modal */}
       <Modal visible={gameEnded} transparent animationType="fade">
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
@@ -247,6 +398,7 @@ export default function GameScreen() {
         </View>
       </Modal>
 
+      {/* Swipe Hue Effects */}
       <Animated.View
         pointerEvents="none"
         style={[

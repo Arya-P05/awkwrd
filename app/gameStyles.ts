@@ -45,14 +45,31 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
 
+  categoryBadge: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 12,
+  },
+
   categoryText: {
     fontSize: 14,
     fontWeight: "600",
     color: "#fcd34d",
-    marginBottom: 12,
     textAlign: "center",
     textTransform: "uppercase",
     letterSpacing: 1,
+  },
+
+  progressContainer: {
+    alignItems: "center",
+    paddingVertical: 8,
+  },
+
+  progressText: {
+    fontSize: 13,
+    color: "rgba(255, 255, 255, 0.5)",
+    fontWeight: "500",
   },
 
   questionText: {
