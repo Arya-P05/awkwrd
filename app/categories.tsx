@@ -49,7 +49,7 @@ const CATEGORIES: {
   {
     id: "relationships",
     name: "Relationships",
-    icon: "heart-outline",
+    icon: "people-outline",
     colour: "rgba(97, 185, 129, 0.85)",
   },
   {
@@ -61,7 +61,7 @@ const CATEGORIES: {
   {
     id: "dating",
     name: "Dating",
-    icon: "people-outline",
+    icon: "heart-outline",
     colour: "rgba(244, 114, 182, 0.9)",
   },
   {
