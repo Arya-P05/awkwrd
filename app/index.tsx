@@ -58,6 +58,13 @@ export default function HomeScreen() {
       </TouchableOpacity>
 
       <TouchableOpacity
+        style={styles.statsButton}
+        onPress={() => router.push("/stats")}
+      >
+        <Ionicons name="analytics-outline" size={30} color="white" />
+      </TouchableOpacity>
+
+      <TouchableOpacity
         style={styles.infoButton}
         onPress={() => router.push("/info")}
       >
@@ -130,6 +137,14 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 30,
     left: 30,
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    padding: 10,
+    borderRadius: 20,
+  },
+  statsButton: {
+    position: "absolute",
+    bottom: 30,
+    left: 90,
     backgroundColor: "rgba(255, 255, 255, 0.2)",
     padding: 10,
     borderRadius: 20,

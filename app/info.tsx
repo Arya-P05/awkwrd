@@ -73,8 +73,15 @@ export default function SettingsScreen() {
           </Text>
         </View>
 
-        {/* Support & Legal */}
+        {/* Stats & Support */}
         <View style={styles.card}>
+          <TouchableOpacity
+            style={styles.optionRow}
+            onPress={() => router.push("/stats")}
+          >
+            <Ionicons name="analytics-outline" size={26} color="white" />
+            <Text style={styles.optionText}>Your Stats & History</Text>
+          </TouchableOpacity>
           <TouchableOpacity style={styles.optionRow} onPress={openEmail}>
             <Ionicons name="mail-outline" size={26} color="white" />
             <Text style={styles.optionText}>Contact Support</Text>
